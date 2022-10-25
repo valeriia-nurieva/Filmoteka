@@ -1,0 +1,15 @@
+.section-film-card {
+    padding-top: 20px;
+    @include tablet {
+        padding-top: 60px;
+    }
+}
+
+.section-pagination {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  @include tablet {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}

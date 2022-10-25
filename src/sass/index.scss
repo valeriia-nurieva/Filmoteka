@@ -1,2 +1,18 @@
-@import './common';
-@import './example';
+@import './utils.scss/variables';
+@import './utils.scss/mixins';
+@import './utils.scss/hidden';
+
+@import './utils.scss/common';
+@import './utils.scss/reset';
+
+@import './components.scss/container';
+@import './components.scss/section';
+@import './components.scss/icon';
+@import './components.scss/button';
+@import './components.scss/modal';
+
+@import './layout.scss/header-home';
+@import './layout.scss/header-library';
+@import './layout.scss/film-list';
+@import './layout.scss/pagination';
+@import './layout.scss/footer';

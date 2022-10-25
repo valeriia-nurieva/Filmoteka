@@ -1,0 +1,21 @@
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+
+  @include mobile {
+    width: 320px;
+    padding-left: $tipycal-mob-margin;
+    padding-right: $tipycal-mob-margin;
+  }
+
+  @include tablet {
+    width: 768px;
+    padding-left: $tipycal-desk-margin;
+    padding-right: $tipycal-desk-margin;
+  }
+
+  @include desktop {
+    width: 1280px;
+  }
+}
