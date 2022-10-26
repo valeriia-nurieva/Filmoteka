@@ -1,0 +1,28 @@
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+
+  @include tablet {
+    gap: 32px;
+    justify-content: left;
+  }
+
+  @include desktop {
+    column-gap: 16px;
+    row-gap: 32px;
+  }
+
+  &__item {
+    min-width: 280px;
+
+    @include tablet {
+      flex-basis: calc((100% - 32px) / 2);
+    }
+
+    @include desktop {
+      flex-basis: calc((100% - 32px) / 3);
+    }
+  }
+}
