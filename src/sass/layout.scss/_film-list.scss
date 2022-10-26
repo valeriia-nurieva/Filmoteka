@@ -8,6 +8,8 @@
 
   &__img {
     margin-bottom: 10px;
+    border-radius: 5px;
+    transition: background $timing-function $cubic, box-shadow $timing-function $cubic;
     @include tablet {
       margin-bottom: 8px;
     }
