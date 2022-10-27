@@ -6,14 +6,16 @@
     @include font(20px, null, 1.2, null);
   }
 
-  &__img {
+  &__thumb {
+    height: 400px;
     margin-bottom: 10px;
-    border-radius: 5px;
     transition: background $timing-function $cubic, box-shadow $timing-function $cubic;
     @include tablet {
+      height: 455px;
       margin-bottom: 8px;
     }
     @include desktop {
+      height: 574px;
       margin-bottom: 12px;
     }
     &:hover,
@@ -21,6 +23,11 @@
       background: #c4c4c4;
       box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
     }
+  }
+
+  &__img{
+    border-radius: 5px;
+    object-fit: cover;
   }
 
   &__header {
