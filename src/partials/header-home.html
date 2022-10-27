@@ -20,10 +20,21 @@
             <li class="nav__item"><a href="" class="nav_item-library">My library</a></li>
         </ul>
       </div>
-    <input type="text" class="inputsearch" placeholder="MovieSearch">
-    <svg class="icon" width="12" height="12">
-    <use href="/src/images/symbol-defs.svg#icon-search"></use>
-    </svg>
+
+      <form class="search-form" id="search-form">
+        <input
+          type="text"
+          name="searchQuery"
+          autocomplete="off"
+          class="inputsearch"
+          placeholder="Movie search"
+        />
+        <button class="search-btn" type="submit"><svg class="icon" width="12" height="12">
+          <use href="/src/images/symbol-defs.svg#icon-search"></use>
+          </svg></button>
+      </form>
   </div>
 </header>
+
+
 

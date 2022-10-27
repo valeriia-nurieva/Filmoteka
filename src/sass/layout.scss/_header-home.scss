@@ -99,17 +99,26 @@ text-transform: uppercase;
 color: #FFFFFF;
 }
 
-.inputsearch {
+.search-form {
 margin-top: 50px;
-width: 394px;
-height: 20px;
-// left: 443px;
+
+
 margin-left: 443px;
-// margin: auto;
+
 top: 116px;
 color: #FFFFFF;
-// opacity: 0;
+
 }
+
+.inputsearch {
+    width: 394px;
+    height: 20px;
+    background-color: transparent;
+    border: none;
+    color: #FFFFFF;
+    
+}
+
 
 
 
