@@ -1,8 +1,7 @@
 const BASE_IMG_URL = 'https://image.tmdb.org/t/p/original';
 
 export function createMarkup(array) {
-  return array
-    .map(
+  return array.map(
       ({ poster_path, title, genre_ids, release_date }) =>
         `<li class="grid__item film-card">
         <a href="#" class="list">
