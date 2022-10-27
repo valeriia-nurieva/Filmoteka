@@ -9,11 +9,13 @@
 @import './components.scss/section';
 @import './components.scss/grid';
 @import './components.scss/icon';
-@import './components.scss/button';
-@import './components.scss/modal';
+@import './components.scss/button'; //можна винести якісь загальні стилі для кнопки
+@import './components.scss/modal'; //загальні стилі - бекдроп і тд
 
 @import './layout.scss/header-home';
 @import './layout.scss/header-library';
-@import './layout.scss/film-list';
+@import './layout.scss/film-list'; 
 @import './layout.scss/pagination';
+@import './layout.scss/modal-film'; //стилі для модалки 1го фільму
+@import './layout.scss/modal-footer'; //стилі для модалки з інфо про команду
 @import './layout.scss/footer';

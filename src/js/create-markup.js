@@ -11,7 +11,7 @@
           />
           <h2 class="film-card__header">ONCE UPON A TIME... IN HOLLYWOOD</h2>
         </a>
-        <p class="film-card__desk">Drama, Comedy</p>
+        <p class="film-card__genres">Drama, Comedy</p>
         <span class="film-card__year">2019</span>
       </li>
 */
@@ -29,7 +29,7 @@
           />
           <h2 class="film-card__header">ONCE UPON A TIME... IN HOLLYWOOD</h2>
         </a>
-        <p class="film-card__desk">Drama, Comedy</p>
+        <p class="film-card__genres">Drama, Comedy</p>
         <span class="film-card__year">2019</span>
         <span class="film-card__rating">8.0</span>
       </li>

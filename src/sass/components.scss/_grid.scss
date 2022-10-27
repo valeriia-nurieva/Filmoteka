@@ -15,7 +15,7 @@
   }
 
   &__item {
-    min-width: 280px;
+    width: 395px;
 
     @include tablet {
       flex-basis: calc((100% - 32px) / 2);
