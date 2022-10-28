@@ -4,19 +4,6 @@
   left: 0px;
   top: 0px;
 }
-.current{
-&::after {
-        content: "";
-        display: block;
-        position: absolute;
-        top: 67px;
-        width: 69px;
-        height: 3px;
-        opacity: 1;
-        background-color: #FF001B;
-        transition: opacity 2000ms var(--timingfunction);
-    }
-}
 .background-lib {
   background-image: url(../images/lib-background-desk-x1.jpg);
 }
@@ -40,8 +27,6 @@
   padding: 40px 0 0 0;
   align-items: center;
 }
-.icon {
-}
 .btn-list {
   display: flex;
   margin: 0;
@@ -51,17 +36,15 @@
   padding-bottom: 60px;
 }
 
-
 .watched {
-    font-family: 'Roboto';
-        font-style: normal;
-        font-weight: 500;
-        font-size: 12px;
-        line-height: 16px;
-        align-items: center;
-        text-align: center;
-        text-transform: uppercase;
-        color: #fff;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
   cursor: pointer;
   color: #fff;
   width: 150px;
@@ -78,15 +61,14 @@
 }
 
 .queue {
-    font-family: 'Roboto';
-        font-style: normal;
-        font-weight: 500;
-        font-size: 12px;
-        line-height: 16px;
-        align-items: center;
-        text-align: center;
-        text-transform: uppercase;
-        color: #fff;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
   cursor: pointer;
   color: #fff;
   width: 150px;
@@ -112,6 +94,7 @@
   }
 }
 .nav-list_link {
+  position: relative;
   color: #fff;
   font-family: 'Roboto';
   font-style: normal;
@@ -121,4 +104,17 @@
   align-items: center;
   text-align: center;
   text-transform: uppercase;
+}
+.current {
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 17px;
+    width: 100%;
+    height: 3px;
+    opacity: 1;
+    background-color: #ff001b;
+    transition: opacity 2000ms var(--timingfunction);
+  }
 }
