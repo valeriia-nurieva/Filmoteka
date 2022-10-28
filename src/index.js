@@ -1,6 +1,7 @@
 import { refs } from './js/refs';
 import { TmdbApi } from './js/TMDB-api';
 import { createMarkup } from './js/create-markup';
+import './js/modal-main';
 
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 const loadingParams = {
