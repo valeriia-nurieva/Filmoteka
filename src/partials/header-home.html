@@ -8,6 +8,33 @@
     <use href="/src/images/symbol-defs.svg#icon-search"></use>
 </svg> -->
 
-<header>
-  <div class="container"></div>
+<header class="header">
+  <div class="container background">
+    <div class="main-nav">
+    <a href="" class="logo-header">
+      <svg class="icon" width="24" height="24">
+      <use href="/src/images/symbol-defs.svg#icon-film"></use>
+      </svg>Filmoteka</a>
+        <ul class="nav">   
+            <li class="nav__item"><a href="" class="nav_item-home-current">Home</a></li>
+            <li class="nav__item"><a href="" class="nav_item-library">My library</a></li>
+        </ul>
+      </div>
+
+      <form class="search-form" id="search-form">
+        <input
+          type="text"
+          name="searchQuery"
+          autocomplete="off"
+          class="inputsearch"
+          placeholder="Movie search"
+        />
+        <button class="search-btn" type="submit"><svg class="icon" width="12" height="12">
+          <use href="/src/images/symbol-defs.svg#icon-search"></use>
+          </svg></button>
+      </form>
+  </div>
 </header>
+
+
+
