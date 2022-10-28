@@ -86,128 +86,128 @@
         padding-right: 12px;
     }
 }
-.modal_flex {
-   @media screen and(min-width: 768px) {
-    width: calc((100% - 144px) / 2);
-    &:not(:last-child) {
-        margin-right: 72px;
-    }
-   } 
-   @media screen and (min-width: 1280px) {
-    width: calc((100% - 40px) / 2);
-    &:not(:last-child) {
-            margin-right: 16px;
-        }
-   }
-}
-.modal_poster {
-   @media screen and(min-width: 768px) and (max-width: 1279px) {
-    max-height: 374px;
-   } 
-}
-.modal_data-flex {
-    display: flex;
-}
-.modal_movie-title {
-    @media screen and (max-width: 768px) {
-        margin-top: 20px;
-    }
+// // .modal_flex {
+// //    @media screen and(min-width: 768px) {
+// //     width: calc((100% - 144px) / 2);
+// //     &:not(:last-child) {
+// //         margin-right: 72px;
+// //     }
+// //    } 
+// //    @media screen and (min-width: 1280px) {
+// //     width: calc((100% - 40px) / 2);
+// //     &:not(:last-child) {
+// //             margin-right: 16px;
+// //         }
+// //    }
+// // }
+// .modal_poster {
+//    @media screen and(min-width: 768px) and (max-width: 1279px) {
+//     max-height: 374px;
+//    } 
+// }
+// .modal_data-flex {
+//     display: flex;
+// }
+// .modal_movie-title {
+//     @media screen and (max-width: 768px) {
+//         margin-top: 20px;
+//     }
    
-    margin-bottom: 20px;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 1.15;
-    color: $primary-text-color;
-    @media screen and (min-width: 1280px) {
-    font-size: 30px;
-    line-height: 1.17;
-         }
-}
-.modal_movie-data {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 1.33;
-    color: #8C8C8C;
-    &:not(:last-child) {
-        margin-bottom: 8px;
-    }
-}
-.modal_data-text {
-    &:not(:last-child) {
-            margin-bottom: 8px;
-        }
-}
-.modal_data-text-box {
-    margin-left: 40px;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 1.33;
-    color:$primary-text-color;
-}
-.modal_about-title {
-    margin-bottom: 8px;
-    margin-top: 20px;
-    text-transform: uppercase;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 1.33;
-    color: $primary-text-color;
-}
-.modal_about-text {
-    max-height: 236px;
-    overflow-y: scroll;
-    margin-bottom: 20px;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 1.67;
-    color: $primary-text-color;
-    @media screen and (min-width: 1280px) {
-            max-height: 160px;
-        }
-}
-.modal_button-box {
-    display: flex;
-    justify-content: center;
-}
-.modal_button {
-    display: block;
-    width: 110px;
-    height: 44px;
-    border-radius: 5px;
-    background-color: $primary-white-color;
-    border-color: $primary-text-color;
-    border: 1px solid;
+//     margin-bottom: 20px;
+//     font-family: 'Roboto';
+//     font-style: normal;
+//     font-weight: 500;
+//     font-size: 20px;
+//     line-height: 1.15;
+//     color: $primary-text-color;
+//     @media screen and (min-width: 1280px) {
+//     font-size: 30px;
+//     line-height: 1.17;
+//          }
+// }
+// .modal_movie-data {
+//     font-family: 'Roboto';
+//     font-style: normal;
+//     font-weight: 500;
+//     font-size: 12px;
+//     line-height: 1.33;
+//     color: #8C8C8C;
+//     &:not(:last-child) {
+//         margin-bottom: 8px;
+//     }
+// }
+// .modal_data-text {
+//     &:not(:last-child) {
+//             margin-bottom: 8px;
+//         }
+// }
+// .modal_data-text-box {
+//     margin-left: 40px;
+//     font-family: 'Roboto';
+//     font-style: normal;
+//     font-weight: 500;
+//     font-size: 12px;
+//     line-height: 1.33;
+//     color:$primary-text-color;
+// }
+// .modal_about-title {
+//     margin-bottom: 8px;
+//     margin-top: 20px;
+//     text-transform: uppercase;
+//     font-family: 'Roboto';
+//     font-style: normal;
+//     font-weight: 500;
+//     font-size: 12px;
+//     line-height: 1.33;
+//     color: $primary-text-color;
+// }
+// .modal_about-text {
+//     max-height: 236px;
+//     overflow-y: scroll;
+//     margin-bottom: 20px;
+//     font-family: 'Roboto';
+//     font-style: normal;
+//     font-weight: 500;
+//     font-size: 12px;
+//     line-height: 1.67;
+//     color: $primary-text-color;
+//     @media screen and (min-width: 1280px) {
+//             max-height: 160px;
+//         }
+// }
+// .modal_button-box {
+//     display: flex;
+//     justify-content: center;
+// }
+// .modal_button {
+//     display: block;
+//     width: 110px;
+//     height: 44px;
+//     border-radius: 5px;
+//     background-color: $primary-white-color;
+//     border-color: $primary-text-color;
+//     border: 1px solid;
 
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 1.33;
-    text-align: center;
-    text-transform: uppercase;
-    color: $primary-text-color;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    cursor: pointer;
-    transition-property: color, background-color, border;
-    transition-duration: $timing-function;
-    transition-timing-function: $cubic;
-    &:not(:last-child) {
-        margin-right: 20px;
-    }
-    &:hover,
-    &:focus {
-              color: $primary-white-color;
-              background-color: $accent-text-color;
-              border: transparent;
-          }
-}
+//     font-family: 'Roboto';
+//     font-style: normal;
+//     font-weight: 500;
+//     font-size: 12px;
+//     line-height: 1.33;
+//     text-align: center;
+//     text-transform: uppercase;
+//     color: $primary-text-color;
+//     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+//     cursor: pointer;
+//     transition-property: color, background-color, border;
+//     transition-duration: $timing-function;
+//     transition-timing-function: $cubic;
+//     &:not(:last-child) {
+//         margin-right: 20px;
+//     }
+//     &:hover,
+//     &:focus {
+//               color: $primary-white-color;
+//               background-color: $accent-text-color;
+//               border: transparent;
+//           }
+// }
