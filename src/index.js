@@ -25,7 +25,8 @@ async function initPage() {
         Loading.pulse(loadingParams);
       const { results } = await fetch.getTrendFilms();
   
-       createMarkup(results);
+      createMarkup(results);
+      
      
   } catch (error) {
     console.log(error.message);

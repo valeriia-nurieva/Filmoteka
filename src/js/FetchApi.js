@@ -16,7 +16,8 @@ export default class FetchFilms {
     
       const { data } = await axios.get(
         `${BASE_URL}trending/movie/day?api_key=${API_KEY}&adult=false`
-      );
+    );
+  
       return data;
    
   }
