@@ -1,6 +1,9 @@
 import axios from 'axios';
 import { refs } from './refs';
 
+let watchedMovies = [];
+let queueMovies = [];
+
 refs.modalCloseBtn.addEventListener('click', onCloseBtn);
 refs.backdrop.addEventListener('click', onBackdropClick);
 
@@ -21,7 +24,44 @@ function onCardClick(e) {
   e.preventDefault();
 
   fetchMovie(e.target.id)
-    .then(createMarkup)
+    .then(createMarkup).then(() => {
+      const btnWatched = document.querySelector('.btn-watched');
+      const btnQueue = document.querySelector('.btn-queue');
+      btnWatched.addEventListener('click', onBtnWatched);
+      btnQueue.addEventListener('click', onBtnQueue);
+      if (watchedMovies.includes(e.target.id)) {
+        btnWatched.textContent = 'remove from watched'; 
+      }
+      if (queueMovies.includes(e.target.id)) {
+        btnQueue.textContent = 'remove from watched'; 
+      }
+      function onBtnWatched() {
+        if (btnWatched.textContent.includes('add')) {
+          btnWatched.textContent = 'remove from watched';
+          const savedWatched = localStorage.getItem('watched');
+          if (savedWatched) {
+            watchedMovies = JSON.parse(savedWatched);
+          }
+          watchedMovies.push(e.target.id);
+          const watchedMoviesJson = JSON.stringify(watchedMovies);
+          localStorage.setItem('watched', watchedMoviesJson);
+        } else
+        {btnWatched.textContent = 'add to watched'}
+}
+      function onBtnQueue() {
+        if (btnQueue.textContent.includes('add')) {
+          btnQueue.textContent = 'remove from queue'
+           const savedQueue = localStorage.getItem('queue');
+          if (savedQueue) {
+            queueMovies = JSON.parse(savedQueue); 
+          }
+          queueMovies.push(e.target.id);
+          const queueMoviesJson = JSON.stringify(queueMovies);
+          localStorage.setItem('queue', queueMoviesJson);
+        } else
+        {btnQueue.textContent = 'add to queue'}
+}
+    })
     .catch(error => {
       console.log(error);
     });
@@ -66,10 +106,10 @@ function createMarkup({
           <h3 class="modal_about-title">About</h3>
           <p class="modal_about-text">${overview}</p>
           <div class="modal_button-box">
-            <button type="button" class="modal_button" data-watched>
+            <button type="button" class="modal_button btn-watched">
               add to Watched
             </button>
-            <button type="button" class="modal_button" data-queue>
+            <button type="button" class="modal_button btn-queue">
               add to queue
             </button>
           </div>
