@@ -1,39 +1,160 @@
 .container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+
+@media screen and (min-width: 320px) {
+    width: 320px;
+    padding-left: $tipycal-mob-margin;
+    padding-right: $tipycal-mob-margin;
+  }
+ @media screen and (min-width: 768px) {
+  width: 768px;
+    padding-left: $tipycal-desk-margin;
+    padding-right: $tipycal-desk-margin;
+ }
+ @media screen and (min-width: 1280px) {
   width: 1280px;
-  height: 216px;
-  left: 0px;
-  top: 0px;
+ }
 }
-.background-lib {
-  background-image: url(../images/lib-background-desk-x1.jpg);
+
+
+header {
+  background-position: center;
+  background-color: $header-background-color;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  @media screen and (min-width: 320px) {
+    background-image: url(../images/lib-background-mob-x1.jpg);
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url(../images/lib-background-mob-x2.jpg);
+    }
+    @media (min-device-pixel-ratio: 3),
+      (min-resolution: 288dpi),
+      (min-resolution: 3dppx) {
+      background-image: url(../images/lib-background-mob-x3.jpg);
+    }
+  }
+  @media screen and (min-width: 768px) {
+    background-image: url(../images/lib-background-tab-x1.jpg);
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url(../images/lib-background-tab-x2.jpg);
+    }
+    @media (min-device-pixel-ratio: 3),
+      (min-resolution: 288dpi),
+      (min-resolution: 3dppx) {
+      background-image: url(../images/lib-background-tab-x3.jpg);
+    }
+  }
+  @media screen and (min-width: 1280px) {
+    background-image: url(../images/lib-background-desk-x1.jpg);
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url(../images/lib-background-desk-x2.jpg);
+    }
+
+    @media (min-device-pixel-ratio: 3),
+      (min-resolution: 288dpi),
+      (min-resolution: 3dppx) {
+      background-image: url(../images/lib-background-desk-x3.jpg);
+    }
+  }
+}
+.mobile {
+  @media screen and (min-width: 320px) {
+    display: block;
+  }
+  @media screen and (min-width: 768px) {
+    display: flex;
+  }
+  @media screen and (min-width: 1280px) {
+    display: flex;
+  }
 }
 .nav-library {
-  display: flex;
+  @media screen and (min-width: 320px) {
+      display: flex;
+      
+      justify-content: center;
+    }
+  @media screen and (min-width: 768px) {
+      display: flex;
+    }
+    @media screen and (min-width: 1280px) {
+      display: flex;
+    }
+  
 }
 .div {
-  align-items: center;
+  @media screen and (min-width: 320px) {
+    
+    }
+  @media screen and (min-width: 768px) {
+      align-items: center;
+    }
+     @media screen and (min-width: 1280px) {
+      align-items: center;
+     }
+  
 }
-.nav__link {
+.nav__link-text {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
   font-size: 30px;
   line-height: 35px;
+  color: #fff;
+  @media screen and (min-width: 320px) {
+    display: none;
+  }
+  @media screen and (min-width: 768px) {
+    display: flex;
+  }
+  @media screen and (min-width: 1280px) {
+    display: flex;
+  }
+}
+.nav__link {
   display: flex;
   text-align: center;
-  color: #fff;
-  text-decoration: none;
-  margin-right: 280px;
-  padding: 40px 0 0 0;
   align-items: center;
+  text-decoration: none;
+  padding: 40px 0 0 0;
+  @media screen and (min-width: 320px) {
+      
+    }
+  @media screen and (min-width: 768px) {
+    margin-right: 9px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-right: 280px;
+  }
 }
 .btn-list {
   display: flex;
   margin: 0;
   padding-left: 0;
   padding-right: 0;
-  padding-top: 115px;
-  padding-bottom: 60px;
+  @media screen and (min-width: 320px) {
+    padding-bottom: 60px;
+    }
+  @media screen and (min-width: 768px) {
+    padding-top: 115px;
+      padding-bottom: 60px;
+    }
+    @media screen and (min-width: 1280px) {
+    padding-top: 115px;
+      padding-bottom: 60px;
+    }
+  
 }
 
 .watched {
@@ -52,7 +173,16 @@
   background-color: transparent;
   border-radius: 5px;
   border: 1px solid rgba(255, 255, 255, 1);
-  margin-right: 15px;
+  @media screen and (min-width: 320px) {
+      margin-right: 20px;
+    }
+  @media screen and (min-width: 768px) {
+    margin-right: 30px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-right: 15px;
+  }
+  transition: background-color $timing-function $cubic;
   &:hover {
     background-color: #ff6b01;
     filter: drop-shadow(0px 8px 43px rgba(255, 107, 1, 0.6));
@@ -76,6 +206,7 @@
   background-color: transparent;
   border-radius: 5px;
   border: 1px solid rgba(255, 255, 255, 1);
+  transition: background-color $timing-function $cubic;
   &:hover {
     background-color: #ff6b01;
     filter: drop-shadow(0px 8px 43px rgba(255, 107, 1, 0.6));
@@ -84,11 +215,24 @@
 }
 .nav-list {
   display: flex;
-  margin: 0 0 0 310px;
-  padding-left: 0;
-  padding-top: 50px;
+  @media screen and (min-width: 320px) {
+      margin: 0;
+      padding-left: 0;
+        padding-top: 45px;
+    }
+  @media screen and (min-width: 768px) {
+    margin: 0 0 0 40px;
+    padding-left: 0;
+      padding-top: 50px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin: 0 0 0 310px;
+    padding-left: 0;
+      padding-top: 50px;
+  }
 }
 .nav-list_item {
+  height: 14px;
   &:not(:last-child) {
     margin-right: 40px;
   }
@@ -104,6 +248,12 @@
   align-items: center;
   text-align: center;
   text-transform: uppercase;
+  transition: color $timing-function $cubic;
+  &:hover,
+  & :focus {
+    box-shadow: inset 100px 0 0 0 transparent;
+    color: #ff001b;
+  }
 }
 .current {
   &::after {
@@ -116,5 +266,48 @@
     opacity: 1;
     background-color: #ff001b;
     transition: opacity 2000ms var(--timingfunction);
+  }
+}
+.icon-lib {
+  @media screen and (min-width: 320px) {
+      margin-right: 113px;;
+      margin-bottom: 70px;
+    }
+  @media screen and (min-width: 768px) {
+      margin-right: 10px;
+    }
+    @media screen and (min-width: 1280px) {
+      margin-right: 10px;
+    }
+  animation: wiggle 2s linear infinite;
+}
+/* Keyframes */
+@keyframes wiggle {
+  7% {
+    transform: rotateZ(0);
+  }
+
+  15% {
+    transform: rotateZ(-15deg);
+  }
+
+  20% {
+    transform: rotateZ(10deg);
+  }
+
+  25% {
+    transform: rotateZ(-10deg);
+  }
+
+  30% {
+    transform: rotateZ(6deg);
+  }
+
+  35% {
+    transform: rotateZ(-4deg);
+  }
+
+  100% {
+    transform: rotateZ(0);
   }
 }
