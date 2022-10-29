@@ -3,7 +3,7 @@ const BASE_IMG_URL = 'https://image.tmdb.org/t/p/original';
 export function createMarkup(array) {
   return array
     .map(
-      ({ poster_path, title, genre_ids, release_date }) =>
+      ({ poster_path, title, genre_ids, release_date, id }) =>
         `<li class="grid__item film-card">
         <a href="#" class="list">
           <div class="film-card__thumb">
@@ -12,6 +12,7 @@ export function createMarkup(array) {
               src="${BASE_IMG_URL}${poster_path}"
               alt="Movie poster"
               loading="lazy"
+              id=${id}
             />
           </div>
           <h2 class="film-card__header">${title}</h2>
