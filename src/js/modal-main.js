@@ -24,16 +24,17 @@ function onCardClick(e) {
   e.preventDefault();
 
   fetchMovie(e.target.id)
-    .then(createMarkup).then(() => {
+    .then(createMarkup)
+    .then(() => {
       const btnWatched = document.querySelector('.btn-watched');
       const btnQueue = document.querySelector('.btn-queue');
       btnWatched.addEventListener('click', onBtnWatched);
       btnQueue.addEventListener('click', onBtnQueue);
       if (watchedMovies.includes(e.target.id)) {
-        btnWatched.textContent = 'remove from watched'; 
+        btnWatched.textContent = 'remove from watched';
       }
       if (queueMovies.includes(e.target.id)) {
-        btnQueue.textContent = 'remove from watched'; 
+        btnQueue.textContent = 'remove from watched';
       }
       function onBtnWatched() {
         if (btnWatched.textContent.includes('add')) {
@@ -43,24 +44,45 @@ function onCardClick(e) {
             watchedMovies = JSON.parse(savedWatched);
           }
           watchedMovies.push(e.target.id);
+
           const watchedMoviesJson = JSON.stringify(watchedMovies);
           localStorage.setItem('watched', watchedMoviesJson);
-        } else
-        {btnWatched.textContent = 'add to watched'}
-}
+        } else {
+          btnWatched.textContent = 'add to watched';
+          const savedWatchedMovies = localStorage.getItem('watched');
+          const savedWatchedMoviesData = JSON.parse(savedWatchedMovies);
+          const index = savedWatchedMoviesData.findIndex(
+            movie => movie === e.target.id
+          );
+          savedWatchedMoviesData.splice(index, 1);
+          const savedWatchedMoviesParsed = JSON.stringify(
+            savedWatchedMoviesData
+          );
+          localStorage.setItem('watched', savedWatchedMoviesParsed);
+        }
+      }
       function onBtnQueue() {
         if (btnQueue.textContent.includes('add')) {
-          btnQueue.textContent = 'remove from queue'
-           const savedQueue = localStorage.getItem('queue');
+          btnQueue.textContent = 'remove from queue';
+          const savedQueue = localStorage.getItem('queue');
           if (savedQueue) {
-            queueMovies = JSON.parse(savedQueue); 
+            queueMovies = JSON.parse(savedQueue);
           }
           queueMovies.push(e.target.id);
           const queueMoviesJson = JSON.stringify(queueMovies);
           localStorage.setItem('queue', queueMoviesJson);
-        } else
-        {btnQueue.textContent = 'add to queue'}
-}
+        } else {
+          btnQueue.textContent = 'add to queue';
+          const savedQueueMovies = localStorage.getItem('queue');
+          const savedQueueMoviesData = JSON.parse(savedQueueMovies);
+          const index = savedQueueMoviesData.findIndex(
+            movie => movie === e.target.id
+          );
+          savedQueueMoviesData.splice(index, 1);
+          const savedWatchedMoviesParsed = JSON.stringify(savedQueueMoviesData);
+          localStorage.setItem('queue', savedWatchedMoviesParsed);
+        }
+      }
     })
     .catch(error => {
       console.log(error);
@@ -98,7 +120,7 @@ function createMarkup({
             </div>
             <div class="modal_data-text-box">
               <p class="modal_data-text">${vote_average}/${vote_count}</p>
-              <p class="modal_data-text">${popularity}</p>
+              <p class="modal_data-text">${popularity.toFixed(1)}</p>
               <p class="modal_data-text">${original_title}</p>
               <p class="modal_data-text">${genres.map(genre => genre.name)}</p>
             </div>
