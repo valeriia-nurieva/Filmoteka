@@ -23,6 +23,10 @@ function fetchMovie(id) {
 function onCardClick(e) {
   e.preventDefault();
 
+  if (e.target.nodeName !== 'IMG') {
+    return;
+  }
+
   fetchMovie(e.target.id)
     .then(createMarkup)
     .then(() => {
