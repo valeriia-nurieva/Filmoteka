@@ -3,9 +3,10 @@ import { genres } from "./search";
 import { refs } from "./refs";
 
 export function createMarkup(array) {
-  const markup= array.map(
-    ({ poster_path, title, genre_ids, release_date }) => {
-      // if (genres.id)
+
+  const markup = array.map(
+    ({ poster_path, title, genre_ids, release_date, id }) => {
+  
       return `<li class="grid__item film-card">
         <a href="#" class="list">
           <div class="film-card__thumb">
@@ -14,6 +15,7 @@ export function createMarkup(array) {
               src="${BASE_IMG_URL}${poster_path}"
               alt="Movie poster"
               loading="lazy"
+              id=${id}
             />
           </div>
           <h2 class="film-card__header">${title}</h2>
