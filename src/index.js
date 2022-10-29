@@ -1,9 +1,17 @@
 import { refs } from './js/refs';
 import { TmdbApi } from './js/TMDB-api';
 import { createMarkup } from './js/create-markup';
-import './js/modal-main';
 
+import './js/btn-back-to-top';
+
+import './js/modal-main';
+import FetchFilms from './js/FetchApi';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
+const fetch = new FetchFilms();
+
+
+
+console.log();
 const loadingParams = {
     svgColor: '#FF6B08',
 };
@@ -15,10 +23,10 @@ initPage();
 async function initPage() {
     try {
         Loading.pulse(loadingParams);
-      const {results} = await tmdb.getTrendingMovies();
-      console.log(results);
-      const markup = createMarkup(results);
-      refs.listHome.insertAdjacentHTML('beforeend', markup);
+      const { results } = await fetch.getTrendFilms();
+  
+       createMarkup(results);
+     
   } catch (error) {
     console.log(error.message);
   } finally {
@@ -26,3 +34,6 @@ async function initPage() {
   }
 }
 
+
+
+import onSearch from './js/search';
