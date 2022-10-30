@@ -1,6 +1,11 @@
 import axios from 'axios';
 import { refs } from './refs';
 import Api from './FetchApi';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
+
+const loadingParams = {
+  svgColor: '#FF6B08',
+};
 
 let watchedMovies = [];
 let queueMovies = [];
@@ -30,6 +35,7 @@ function onCardClick(e) {
   }
 
   fetchMovie(e.target.id)
+    .then(Loading.pulse(loadingParams))
     .then(createMarkup)
     .then(() => {
       const btnWatched = document.querySelector('.btn-watched');
@@ -99,7 +105,8 @@ function onCardClick(e) {
     })
     .catch(error => {
       console.log(error);
-    });
+    })
+    .finally(Loading.remove());
 
   refs.backdrop.classList.toggle('backdrop--is-hidden');
   window.addEventListener('keydown', onEscClick);
