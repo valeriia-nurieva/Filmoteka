@@ -1,20 +1,23 @@
-.container {
-    width: 1280px;
-    height: 216px;
-    left: 0px;
-    top: 0px;
-}
-.background {
+
+
+.header {
     background-image: url(../images/background-with-red-lines-desk-x1.jpg);
+    background-position: center;
+    background-color: $header-background-color;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 216px;
+
+
 }
 
 .icon{
 top: 45;
-margin-right: 10;
+
 }
 
 .logo-header {
-
+    // position: absolute;
 // width: 141px;
 height: 35px;
 left: 66px;
@@ -26,8 +29,10 @@ font-weight: 500;
 font-size: 30px;
 line-height: 35px;
 display: flex;
+justify-content: flex-start;
 align-items: center;
 text-align: center;
+text-decoration: none;
 
 color: #FFFFFF;
 
@@ -41,9 +46,11 @@ flex-direction: column-reverse;
 }
 
 .nav {
-top:49;
-margin-right: 600;
+// top:49;
+// margin-right: 600;
 list-style:none;
+display: inline-flex;
+flex-direction: column-reverse;
 
 }
 
@@ -60,8 +67,10 @@ font-weight: 500;
 font-size: 12px;
 line-height: 14px;
 /* identical to box height */
+text-decoration: none;
+margin-left: 650px;
 
-display: flex;
+// display: flex;
 align-items: center;
 text-align: center;
 text-transform: uppercase;
@@ -94,8 +103,13 @@ font-style: normal;
 font-weight: 500;
 font-size: 12px;
 line-height: 14px;
+margin-left: 650px;
+
+
 
 /* identical to box height */
+
+text-decoration: none;
 
 display: flex;
 align-items: center;
@@ -118,11 +132,23 @@ color: #FFFFFF;
 }
 
 .inputsearch {
+    position: relative;
 width: 394px;
 height: 20px;
 background-color: transparent;
 border: none;
 color: #FFFFFF;
-
+border-bottom: 1px solid #FFFFFF;
+padding-bottom: 10px;
 }
+
+.search-error {
+    display: flex;
+   color:#FF001B;
+   width: 393px;
+margin-top: 20px;
+margin-left: 460px;
+   justify-content: space-around;
+}
+
 
