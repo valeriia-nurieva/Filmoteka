@@ -1,12 +1,19 @@
 const BASE_IMG_URL = 'https://image.tmdb.org/t/p/original';
-import { genres } from './search';
-import { refs } from './refs';
+import { genres } from "./search";
+import { refs } from "./refs";
+function filmCard() {
+  const filmYear = document.querySelector('.film-card__year');
 
+  filmYear.textContent.slice(0, 4);
+  console.log(filmYear.textContent.slice(0, 4));
+}
 export function createMarkup(array) {
-  const markup = array
-    .map(({ poster_path, title, genre_ids, release_date, id }) => {
+  const markup= array.map(
+    ({ poster_path, title, genre_ids,id, release_date }) => {
+
+      const date = release_date.slice(0, 4);
       return `<li class="grid__item film-card">
-        <a href="#" class="list">
+        <a href="#" data-id="${id}" class="list">
           <div class="film-card__thumb">
             <img
               class="film-card__img"
@@ -19,7 +26,7 @@ export function createMarkup(array) {
         </a>
         <h2 class="film-card__header">${title}</h2>
         <p class="film-card__genres">${genre_ids}</p>
-        <span class="film-card__year">${release_date}</span>
+        <span class="film-card__year">${date}</span>
       </li>`;
     })
     .join('');
