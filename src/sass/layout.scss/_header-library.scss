@@ -81,8 +81,7 @@ header {
 }
 .nav-library {
   @media screen and (min-width: 320px) {
-      display: flex;
-      
+      display: block;
       justify-content: center;
     }
   @media screen and (min-width: 768px) {
@@ -95,13 +94,13 @@ header {
 }
 .div {
   @media screen and (min-width: 320px) {
-    
+      display:flex
     }
   @media screen and (min-width: 768px) {
-      align-items: center;
+      display: flex
     }
      @media screen and (min-width: 1280px) {
-      align-items: center;
+      display: flex
      }
   
 }
@@ -116,6 +115,7 @@ header {
     display: none;
   }
   @media screen and (min-width: 768px) {
+    
     display: flex;
   }
   @media screen and (min-width: 1280px) {
@@ -132,10 +132,13 @@ header {
       
     }
   @media screen and (min-width: 768px) {
-    margin-right: 9px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-right: 385px;
   }
   @media screen and (min-width: 1280px) {
-    margin-right: 280px;
+    margin-right: 900px;
   }
 }
 .btn-list {
@@ -147,12 +150,13 @@ header {
     padding-bottom: 60px;
     }
   @media screen and (min-width: 768px) {
-    padding-top: 115px;
-      padding-bottom: 60px;
+    justify-content: center;
+    margin-top: 40px;
+    padding-bottom: 60px;
     }
     @media screen and (min-width: 1280px) {
-    padding-top: 115px;
-      padding-bottom: 60px;
+    padding-top: 0;
+    padding-bottom: 60px;
     }
   
 }
@@ -168,19 +172,24 @@ header {
   text-transform: uppercase;
   cursor: pointer;
   color: #fff;
-  width: 150px;
-  height: 45px;
+  
   background-color: transparent;
   border-radius: 5px;
   border: 1px solid rgba(255, 255, 255, 1);
   @media screen and (min-width: 320px) {
       margin-right: 20px;
+      width: 125px;
+      height: 45px;
     }
   @media screen and (min-width: 768px) {
     margin-right: 30px;
+    width: 150px;
+      height: 45px;
   }
   @media screen and (min-width: 1280px) {
     margin-right: 15px;
+    width: 150px;
+      height: 45px;
   }
   transition: background-color $timing-function $cubic;
   &:hover {
@@ -212,23 +221,40 @@ header {
     filter: drop-shadow(0px 8px 43px rgba(255, 107, 1, 0.6));
     border-color: transparent;
   }
+    @media screen and (min-width: 320px) {
+    
+      width: 125px;
+      height: 45px;
+    }
+  
+    @media screen and (min-width: 768px) {
+    
+      width: 150px;
+      height: 45px;
+    }
+  
+    @media screen and (min-width: 1280px) {
+    
+      width: 150px;
+      height: 45px;
+    }
 }
 .nav-list {
   display: flex;
   @media screen and (min-width: 320px) {
       margin: 0;
       padding-left: 0;
-        padding-top: 45px;
+      padding-top: 45px;
     }
   @media screen and (min-width: 768px) {
-    margin: 0 0 0 40px;
+    margin: 0;
     padding-left: 0;
-      padding-top: 50px;
+    padding-top: 50px;
   }
   @media screen and (min-width: 1280px) {
-    margin: 0 0 0 310px;
+    margin: 0;
     padding-left: 0;
-      padding-top: 50px;
+    padding-top: 50px;
   }
 }
 .nav-list_item {
@@ -275,6 +301,7 @@ header {
     }
   @media screen and (min-width: 768px) {
       margin-right: 10px;
+      margin-bottom: 0;
     }
     @media screen and (min-width: 1280px) {
       margin-right: 10px;
