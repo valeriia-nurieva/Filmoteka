@@ -1,26 +1,36 @@
 const BASE_IMG_URL = 'https://image.tmdb.org/t/p/original';
+import { genres } from "./search";
+import { refs } from "./refs";
+function filmCard() {
+  const filmYear = document.querySelector('.film-card__year');
 
+  filmYear.textContent.slice(0, 4);
+  console.log(filmYear.textContent.slice(0, 4));
+}
 export function createMarkup(array) {
-  return array
-    .map(
-      ({ poster_path, title, genre_ids, release_date }) =>
-        `<li class="grid__item film-card">
-        <a href="#" class="list">
+  const markup= array.map(
+    ({ poster_path, title, genre_ids,id, release_date }) => {
+
+      const date = release_date.slice(0, 4);
+      return `<li class="grid__item film-card">
+        <a href="#" data-id="${id}" class="list">
           <div class="film-card__thumb">
             <img
               class="film-card__img"
               src="${BASE_IMG_URL}${poster_path}"
               alt="Movie poster"
               loading="lazy"
+              id=${id}
             />
           </div>
-          <h2 class="film-card__header">${title}</h2>
         </a>
+        <h2 class="film-card__header">${title}</h2>
         <p class="film-card__genres">${genre_ids}</p>
-        <span class="film-card__year">${release_date}</span>
-      </li>`
-    )
+        <span class="film-card__year">${date}</span>
+      </li>`;
+    })
     .join('');
+  refs.listHome.insertAdjacentHTML('beforeend', markup);
 }
 
 /* 
