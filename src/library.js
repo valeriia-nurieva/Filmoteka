@@ -4,7 +4,7 @@ import { createLibraryMarkup } from './js/create-library-markup';
 
 import FetchFilms from './js/FetchApi';
 const fetch = new FetchFilms();
-LOCAL_STORAGE_KEY = 'film-id';
+const LOCAL_STORAGE_KEY = 'film-id';
 
 const tmdb = new TmdbApi();
 inid();
