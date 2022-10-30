@@ -5,6 +5,7 @@ export function createLibraryMarkup({
   poster_path,
   title,
   release_date,
+  id
 }) {
   let genresArr = [];
   genres.map((genre) =>
@@ -17,7 +18,7 @@ export function createLibraryMarkup({
   const genresStr = genresArr.join(', ');
   const year = release_date.slice(0, 4);
   return `<li class="grid__item film-card ">
-        <a href="#" class="list">
+        <a href="#" data-id="${id}" class="list">
           <div class="film-card__thumb">
             <img
               class="film-card__img"
