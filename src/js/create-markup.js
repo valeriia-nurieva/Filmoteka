@@ -20,10 +20,11 @@ export function createMarkup(array) {
               src="${BASE_IMG_URL}${poster_path}"
               alt="Movie poster"
               loading="lazy"
+              id=${id}
             />
           </div>
-          <h2 class="film-card__header">${title}</h2>
         </a>
+        <h2 class="film-card__header">${title}</h2>
         <p class="film-card__genres">${genre_ids}</p>
         <span class="film-card__year">${date}</span>
       </li>`;

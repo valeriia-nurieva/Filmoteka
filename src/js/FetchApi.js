@@ -11,10 +11,13 @@ export default class FetchFilms {
 
   /////Тренди
   async getTrendFilms() {
-    const { data } = await axios.get(
-      `${BASE_URL}trending/movie/day?api_key=${API_KEY}&adult=false`
-    );
-    return data;
+   
+    
+      const { data } = await axios.get(
+        `${BASE_URL}trending/movie/day?api_key=${API_KEY}&adult=false`
+      );
+      return data;
+   
   }
   /////пошук фильма
   async getFilmsByName() {
