@@ -7,7 +7,8 @@ let queueMovies = [];
 refs.modalCloseBtn.addEventListener('click', onCloseBtn);
 refs.backdrop.addEventListener('click', onBackdropClick);
 
-refs.card.addEventListener('click', onCardClick);
+refs.listHome.addEventListener('click', onCardClick);
+
 function getFilmID(id) {
   return axios.get(
     `https://api.themoviedb.org/3/movie/${id}?api_key=1d9e78535f6a01dcc41594da81e379a7&adult=false`
