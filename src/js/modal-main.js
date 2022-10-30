@@ -1,23 +1,24 @@
 import axios from 'axios';
 import { refs } from './refs';
+import Api from './FetchApi';
 
 let watchedMovies = [];
 let queueMovies = [];
 
 refs.modalCloseBtn.addEventListener('click', onCloseBtn);
 refs.backdrop.addEventListener('click', onBackdropClick);
-
 refs.listHome.addEventListener('click', onCardClick);
 
-function getFilmID(id) {
-  return axios.get(
-    `https://api.themoviedb.org/3/movie/${id}?api_key=1d9e78535f6a01dcc41594da81e379a7&adult=false`
-  );
-}
+const api = new Api();
+// function getFilmID(id) {
+//   return axios.get(
+//     `https://api.themoviedb.org/3/movie/${id}?api_key=1d9e78535f6a01dcc41594da81e379a7&adult=false`
+//   );
+// }
 
 function fetchMovie(id) {
-  return getFilmID(id).then(response => {
-    return response.data;
+  return api.getFilmDetails(id).then(response => {
+    return response;
   });
 }
 
@@ -35,12 +36,19 @@ function onCardClick(e) {
       const btnQueue = document.querySelector('.btn-queue');
       btnWatched.addEventListener('click', onBtnWatched);
       btnQueue.addEventListener('click', onBtnQueue);
-      if (watchedMovies.includes(e.target.id)) {
+
+      const getWatchedMovies = localStorage.getItem('watched');
+      const getWatchedMoviesParsed = JSON.parse(getWatchedMovies);
+      if (getWatchedMoviesParsed.includes(e.target.id)) {
         btnWatched.textContent = 'remove from watched';
       }
-      if (queueMovies.includes(e.target.id)) {
+
+      const getQueueMovies = localStorage.getItem('queue');
+      const getQueueMoviesParsed = JSON.parse(getQueueMovies);
+      if (getQueueMoviesParsed.includes(e.target.id)) {
         btnQueue.textContent = 'remove from watched';
       }
+
       function onBtnWatched() {
         if (btnWatched.textContent.includes('add')) {
           btnWatched.textContent = 'remove from watched';
