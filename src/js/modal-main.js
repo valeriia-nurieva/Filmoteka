@@ -52,7 +52,7 @@ function onCardClick(e) {
       const getQueueMovies = localStorage.getItem('queue');
       const getQueueMoviesParsed = JSON.parse(getQueueMovies);
       if (getQueueMoviesParsed.includes(e.target.id)) {
-        btnQueue.textContent = 'remove from watched';
+        btnQueue.textContent = 'remove from queue';
       }
 
       function onBtnWatched() {
