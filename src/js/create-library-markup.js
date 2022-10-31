@@ -25,6 +25,7 @@ export function createLibraryMarkup({
               src="${BASE_IMG_URL}${poster_path}"
               alt="Movie poster"
               loading="lazy"
+              id=${id}
             />
           </div>
           <h2 class="film-card__header">${title}</h2>

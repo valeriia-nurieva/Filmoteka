@@ -1,5 +1,7 @@
 import './js/render-library';
 import './js/btn-back-to-top';
+import './js/create-library-markup';
+import './js/modal-main';
 
 const watchedBtn = document.querySelector('.watched');
 const queueBtn = document.querySelector('.queue');
@@ -15,5 +17,6 @@ function onQueueBtn() {
 
 watchedBtn.addEventListener('click', onWatched);
 queueBtn.addEventListener('click', onQueueBtn);
+
 
 
