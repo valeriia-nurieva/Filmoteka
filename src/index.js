@@ -35,3 +35,5 @@ async function initPage() {
 import onSearch from './js/search';
 import changeColor from './js/svgBgc';
 
+import test from './js/test';
+import renderCard from './js/slider';
