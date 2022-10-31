@@ -1,7 +1,7 @@
 import { refs } from './js/refs';
 import { TmdbApi } from './js/TMDB-api';
 import { createMarkup } from './js/create-markup';
-
+import './js/pagination';
 import './js/btn-back-to-top';
 
 import './js/modal-main';
