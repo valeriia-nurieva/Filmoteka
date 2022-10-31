@@ -7,6 +7,7 @@ export default class FetchFilms {
   constructor() {
     this.page = 1;
     this.searchQuery = '';
+
   }
 
   /////Тренди
@@ -14,22 +15,39 @@ export default class FetchFilms {
    
     
       const { data } = await axios.get(
-        `${BASE_URL}trending/movie/day?api_key=${API_KEY}&adult=false&page=${this.page}`
-      );
+        `${BASE_URL}trending/movie/day?api_key=${API_KEY}&adult=false`
+    );
+  
       return data;
    
   }
+
+  async getSetFilms() {
+   
+    
+    const { data } = await axios.get(
+      `${BASE_URL}/movie/popular?api_key=${API_KEY}&adult=false`
+  );
+
+    return data;
+ 
+}
   /////пошук фильма
   async getFilmsByName() {
-    const searchParams = new URLSearchParams({
-      api_key: API_KEY,
-      query: this.searchQuery,
-      language: 'en-US',
-      page: this.page,
-      include_adult: false, /// контент для дорослих и тд
-    });
-    const { data } = await axios.get(`${BASE_URL}search/movie?${searchParams}&page=${this.page}`);
-    return data;
+ 
+      const searchParams = new URLSearchParams({
+        api_key: API_KEY,
+        query: this.searchQuery,
+        language: 'en-US',
+        page: this.page,
+        include_adult: false, /// контент для дорослих и тд
+      });
+;
+      const { data } = await axios.get(
+        `${BASE_URL}search/movie?${searchParams}`
+      );
+      return data;
+    
   }
   ////Посилання на документацію для запиту повної інформації про кінофільм для сторінки кінофільму:
   async getFilmDetails(id) {
