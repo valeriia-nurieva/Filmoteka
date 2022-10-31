@@ -109,6 +109,7 @@ function onCardClick(e) {
     .finally(Loading.remove());
 
   refs.backdrop.classList.toggle('backdrop--is-hidden');
+  document.body.classList.toggle('overflow-hidden');
   window.addEventListener('keydown', onEscClick);
 }
 
@@ -123,10 +124,12 @@ function createMarkup({
   poster_path,
 }) {
   const markup = `<div class="modal_flex">
-          <img
+            <img
             src="https://image.tmdb.org/t/p/w500${poster_path}"
             alt="Movie poster"
             class="modal_poster"
+            width="375"
+            height="478"
           />
         </div>
         <div class="modal_flex">
@@ -139,7 +142,7 @@ function createMarkup({
               <h3 class="modal_movie-data">Genre</h3>
             </div>
             <div class="modal_data-text-box">
-              <p class="modal_data-text">${vote_average}/${vote_count}</p>
+             <p class="modal_data-text"><span class="modal_text-span">${vote_average.toFixed(1)}</span>/${vote_count}</p>
               <p class="modal_data-text">${popularity.toFixed(1)}</p>
               <p class="modal_data-text">${original_title}</p>
               <p class="modal_data-text">${genres.map(genre => genre.name)}</p>
@@ -186,4 +189,5 @@ function clearHtml() {
 
 function closeModal() {
   refs.backdrop.classList.toggle('backdrop--is-hidden');
+  document.body.classList.toggle('overflow-hidden');
 }
