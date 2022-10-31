@@ -1,17 +1,26 @@
 const BASE_IMG_URL = 'https://image.tmdb.org/t/p/original';
-import { genres } from "./search";
-import { refs } from "./refs";
-function filmCard() {
-  const filmYear = document.querySelector('.film-card__year');
+import { genres } from './json/genres';
+import { refs } from './refs';
 
-  filmYear.textContent.slice(0, 4);
-  console.log(filmYear.textContent.slice(0, 4));
-}
 export function createMarkup(array) {
-  const markup= array.map(
-    ({ poster_path, title, genre_ids,id, release_date }) => {
+  const markup = array
+    .map(({ poster_path, title, genre_ids, id, release_date }) => {
+
+      let nameOfGenre = [];
+      genres.map(genre => {
+        if (genre_ids.includes(genre.id)) {
+          nameOfGenre.push(genre.name);
+          if (nameOfGenre.length > 3) {
+            const changedArr = nameOfGenre.slice(0, 2);
+            changedArr.push('Other');
+            nameOfGenre = changedArr;
+          }
+        }
+      });
+      const genresStr = nameOfGenre.join(', ');
 
       const date = release_date.slice(0, 4);
+      
       return `<li class="grid__item film-card">
         <a href="#" data-id="${id}" class="list">
           <div class="film-card__thumb">
@@ -25,31 +34,10 @@ export function createMarkup(array) {
           </div>
         </a>
         <h2 class="film-card__header">${title}</h2>
-        <p class="film-card__genres">${genre_ids}</p>
+        <p class="film-card__genres">${genresStr}</p>
         <span class="film-card__year">${date}</span>
       </li>`;
     })
     .join('');
   refs.listHome.insertAdjacentHTML('beforeend', markup);
 }
-
-/* 
-Шаблон розмітки картки фільму на cторінці бібліотеки
-
-      <li class="grid__item film-card">
-        <a href="#" class="list">
-          <div class="film-card__thumb">
-            <img
-              class="film-card__img"
-              src="/src/images/example.jpg"
-              alt="Movie poster"
-              loading="lazy"
-            />
-          </div>
-          <h2 class="film-card__header">ONCE UPON A TIME... IN HOLLYWOOD</h2>
-        </a>
-        <p class="film-card__genres">Drama, Comedy</p>
-        <span class="film-card__year">2019</span>
-        <span class="film-card__rating">8.0</span>
-      </li>
-*/
