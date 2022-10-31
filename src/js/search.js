@@ -8,45 +8,44 @@ import { Notify } from 'notiflix';
 const fetch = new FetchFilms();
 const onSearchForm = document.querySelector('#search-form');
 onSearchForm.addEventListener('submit', onSearch);
+const searchError = document.querySelector('.search-error');
 
-// body.style.backgroundColor = 'red';
 
-console.log(fetch);
+searchError.textContent = '';
+
 export default async function onSearch(e) {
   e.preventDefault();
 
   fetch.searchQuery = e.currentTarget.elements.searchQuery.value.trim();
 
-  //   console.log(results);
-  //   console.log(results);
 
   try {
     if (fetch.searchQuery === '') {
-      Notify.failure('Please enter your search data.');
+      searchError.textContent = 'Please enter your search data.';
     } else {
-      const { results, total_pages } = await fetch.getFilmsByName();
+      const { results} = await fetch.getFilmsByName();
 
-      console.log(total_pages);
       if (results.length === 0) {
         setTimeout(
-          Notify.info(
-            'Sorry, there are no images matching your search query. Please try again.'
-          ),
+          (searchError.textContent =
+            'Search result not successful. Enter the correct movie name and'),
           0
         );
       } else {
-        refs.listHome.innerHTML = '';
+
+      clearList();
 
         createMarkup(results);
       }
     }
   } catch (error) {
-    Notify.failure(
-      "We're sorry, but you've reached the end of search results."
-    );
+    searchError.textContent ="We're sorry, but you've reached the end of search results.";
   }
 }
 
 function clearList() {
   refs.listHome.innerHTML = '';
+        searchError.textContent = '';
+
 }
+
