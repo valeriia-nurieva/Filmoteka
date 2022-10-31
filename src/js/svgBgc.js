@@ -10,20 +10,59 @@ ButtonSvg.addEventListener('click', changeColor);
 sun.classList.add('is-hidden');
 ButtonSvg.classList.add('ChangeColor');
 
-import { themeChange } from 'theme-change';
-themeChange();
+let DARK = 'DARK';
+let LIGHT = 'LIGHT';
+        // localStorage.setItem(LIGHT, addBgc);
+        //   localStorage.setItem(LIGHT, removeBgc);
 
-console.log();
 export default function changeColor() {
     if (body.classList.contains('color')) {
+        localStorage.setItem(LIGHT, body.style.backgroundColor = '#FFF');
+           localStorage.removeItem(
+             DARK,
+             (body.style.backgroundColor = 'rgba(0, 0, 0, 0.74)')
+           );
+  addBgc();
+    } else {
+          localStorage.removeItem(LIGHT,  body.style.backgroundColor = '#FFF');
+          localStorage.setItem(
+            DARK,
+            (body.style.backgroundColor = 'rgba(0, 0, 0, 0.74)')
+          );
+      removeBgc();
 
-    body.classList.remove('color');
-    sun.classList.add('is-hidden');
-    moon.classList.remove('is-hidden');
-  } else {
+    }
+}
+function addBgc() {
+        body.style.backgroundColor = '#FFF';
+        body.classList.remove('color');
+        sun.classList.add('is-hidden');
+        moon.classList.remove('is-hidden');
+}
 
+
+function removeBgc() {
     body.classList.add('color');
     sun.classList.remove('is-hidden');
     moon.classList.add('is-hidden');
-  }
+    body.style.backgroundColor = 'rgba(0, 0, 0, 0.74)';
 }
+
+dark();
+console.log(!localStorage.getItem(DARK));
+function dark() {
+  if (!localStorage.getItem(DARK)) {
+      return;
+    } 
+    localStorage.getItem(DARK);
+    removeBgc();
+};
+
+light();
+
+function light() {
+  if (!localStorage.getItem(LIGHT)) {
+    return;
+    }addBgc();
+    localStorage.getItem(LIGHT);
+};

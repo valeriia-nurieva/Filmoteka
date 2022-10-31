@@ -21,11 +21,11 @@ export function createMarkup(array) {
 
       const date = release_date.slice(0, 4);
       
-      return `<li class="grid__item film-card">
+      return `<li class="grid__item  film-card">
         <a href="#" data-id="${id}" class="list">
-          <div class="film-card__thumb">
+          <div class="film-card__thumb  ">
             <img
-              class="film-card__img"
+              class="film-card__img gallery__image"
               src="${BASE_IMG_URL}${poster_path}"
               alt="Movie poster"
               loading="lazy"
