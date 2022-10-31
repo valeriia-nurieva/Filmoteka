@@ -74,9 +74,7 @@ function onCardClick(e) {
             movie => movie === e.target.id
           );
           savedWatchedMoviesData.splice(index, 1);
-          const savedWatchedMoviesParsed = JSON.stringify(
-            savedWatchedMoviesData
-          );
+          const savedWatchedMoviesParsed = JSON.stringify(savedWatchedMoviesData);
           localStorage.setItem('watched', savedWatchedMoviesParsed);
         }
       }
