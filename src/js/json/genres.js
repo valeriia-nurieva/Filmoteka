@@ -1,4 +1,4 @@
-{
+const json = {
   "genres": [
     {
       "id": 28,
@@ -78,3 +78,9 @@
     }
   ]
 }
+export const { genres } = json;
+
+
+
+
+
