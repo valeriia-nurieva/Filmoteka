@@ -1,7 +1,7 @@
 .film-card {
   @include font(12px, 500, 1.33, null);
   font-family: inherit;
-  color: $accent-text-color;
+  color: inherit;
   @include desktop {
     @include font(20px, null, 1.2, null);
   }
@@ -10,6 +10,7 @@
     height: 400px;
     margin-bottom: 10px;
     transition: background $timing-function $cubic, box-shadow $timing-function $cubic;
+    border-radius: 5px;
     @include tablet {
       height: 455px;
       margin-bottom: 8px;
@@ -31,7 +32,7 @@
   }
 
   &__header {
-    color: $primary-text-color;
+    color: inherit;
     font-size: inherit;
     font-weight: inherit;
   }
@@ -40,6 +41,7 @@
     display: inline-block;
     padding-right: 0.3em;
     border-right: 1px solid $accent-text-color;
+    color: $accent-text-color;
   }
 
   &__rating {
@@ -54,5 +56,9 @@
       width: 60px;
       padding: 3px;
     }
+  }
+
+  &__year {
+    color: $accent-text-color;
   }
 }
