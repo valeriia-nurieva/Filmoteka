@@ -1,40 +1,17 @@
-
-.is-hidden {
-  display: none;
-}
-.page{
-color: rgb(0, 0, 0)
-}
 .color {
-    color: #fff;
-//   background-color: rgba(0, 0, 0, 0.74);
+  color: #fff;
 }
 .ichangeBgc__svg {
   color: #fff;
 }
 
-
-.ChangeColor{
-border: none;
-background-color:rgba(255, 255, 255, 0);
+.ChangeColor {
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
 }
 
-
-.iconJs{
-    width: 25px;
-    color: #ffda08;
-    fill:#FF6B08 ;
-}
-
-.colorH2{
-color: #FFFFFF;
-}
-// #FF6B08;
-
-.gallery__image {
- object-fit: cover;
-  border-radius: 8px;
-  transition: transform 0.6s ease;
-}.gallery__image:hover {
-  transform: scale(1.05);
+.iconJs {
+  width: 25px;
+  color: #ffda08;
+  fill: #ff6b08;
 }
