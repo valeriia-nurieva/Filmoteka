@@ -1,7 +1,6 @@
 import { refs } from './refs';
 import { createLibraryMarkup } from './create-library-markup';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
-// import { onCardClick } from './modal-main';
 import FetchFilms from './FetchApi';
 
 const fetch = new FetchFilms();
@@ -18,7 +17,10 @@ init();
 
 refs.btnLibWatched.addEventListener('click', onWatchedClick);
 refs.btnLibQueue.addEventListener('click', onQueueClick);
-// refs.listLib.addEventListener('click', onCardClick);
+
+if (saveDataAll.length === 0) {
+  refs.blockEmptyLib.classList.remove('is-hidden');
+}
 
 function init() {
   if (saveDataAll) {
@@ -75,3 +77,9 @@ function onQueueClick() {
     }
   }
 }
+
+
+      const btnWatched = document.querySelector('.btn-watched');
+const btnQueue = document.querySelector('.btn-queue');
+console.log(btnWatched);
+console.log(btnQueue);
