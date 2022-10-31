@@ -14,7 +14,7 @@ export default class FetchFilms {
    
     
       const { data } = await axios.get(
-        `${BASE_URL}trending/movie/day?api_key=${API_KEY}&adult=false`
+        `${BASE_URL}trending/movie/day?api_key=${API_KEY}&adult=false&page=${this.page}`
       );
       return data;
    
@@ -28,7 +28,7 @@ export default class FetchFilms {
       page: this.page,
       include_adult: false, /// контент для дорослих и тд
     });
-    const { data } = await axios.get(`${BASE_URL}search/movie?${searchParams}`);
+    const { data } = await axios.get(`${BASE_URL}search/movie?${searchParams}&page=${this.page}`);
     return data;
   }
   ////Посилання на документацію для запиту повної інформації про кінофільм для сторінки кінофільму:
