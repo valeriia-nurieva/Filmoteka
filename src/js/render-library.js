@@ -9,6 +9,7 @@ const LOCAL_STORAGE_KEY_QUEUE = 'queue';
 const saveDataWatched = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_WATCHED));
 const saveDataQueue = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_QUEUE));
 const saveDataAll = saveDataWatched.concat(saveDataQueue);
+const savedDataAllQniue = saveDataAll.filter((data, index, array) => array.indexOf(data) === index);
 const loadingParams = {
   svgColor: '#FF6B08',
 };
@@ -26,7 +27,7 @@ function init() {
   if (saveDataAll) {
     try {
       Loading.pulse(loadingParams);
-      saveDataAll.map(id => {
+      savedDataAllQniue.map(id => {
         fetch.getFilmDetails(id).then(promise => {
           const markup = createLibraryMarkup(promise);
           refs.listLib.insertAdjacentHTML('beforeend', markup);
