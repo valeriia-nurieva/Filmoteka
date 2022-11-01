@@ -10,10 +10,9 @@ const fetch = new FetchFilms();
 const onSearchForm = document.querySelector('#search-form');
 onSearchForm.addEventListener('submit', onSearch);
 const searchError = document.querySelector('.search-error');
-
+const sliderTitle = document.querySelector('slider-title');
 
 searchError.textContent = '';
-
 export default async function onSearch(e) {
   e.preventDefault();
   fetch.searchQuery = e.currentTarget.elements.searchQuery.value.trim();
@@ -32,6 +31,7 @@ export default async function onSearch(e) {
         if (!total_results) {
           //  return searchError.textContent = 'Sorry, but your movie was not found';
         } else {
+          // sliderTitle.classList.add('is-hidden');
           clearList();
           createMarkup(results);
         }

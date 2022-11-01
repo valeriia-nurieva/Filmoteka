@@ -37,7 +37,7 @@ function addElFilms(results) {
   results.forEach(el => {
     let image = createElement('img', {
       class: 'cards__image-poster',
-      src: `https://image.tmdb.org/t/p/w154${el.poster_path}`,
+      src: `https://image.tmdb.org/t/p/w500${el.poster_path}`,
       onerror: `this.onerror=null;this.src='https://i.ibb.co/4ThsTsv/poster-coming-soon.jpg'`,
       alt: 'film__poster',
       id: el.id,
@@ -60,7 +60,7 @@ function addElFilms(results) {
   let glid = new Glide('.glide', config);
   glid.mount();
 
-  simpleLightbox();
+ 
 }
 
 export const createElement = (nodeName, options, children) => {
@@ -91,17 +91,8 @@ export const createElement = (nodeName, options, children) => {
   return nodeElement;
 };
 
-function simpleLightbox() {
-  let lightbox = new SimpleLightbox('.glide__slide', {
-    captions: false,
-    captionDelay: 250,
-    enableKeyboard: true,
-    doubleTapZoom: 5,
-  });
-  lightbox.refresh();
-}
 
-//after render slider, change arrow style function
+
 
 function changeStyleArrow() {
   const refs = {
@@ -124,4 +115,3 @@ function changeStyleArrow() {
   refs.right.style.right = '4px';
 }
 
-// click slider el open modal
