@@ -8,14 +8,11 @@ import SimpleLightbox from 'simplelightbox';
 import './modal-main';
 
 const slider = document.querySelector('.swiper-wrapper');
-console.log(slider);
 
 renderCard();
 export default async function renderCard() {
   const { results, total_results } = await fetch.getSetFilms();
   addElFilms(results);
-  console.log(results);
-  console.log(total_results);
 }
 
 fetch.incrementPage();
@@ -28,8 +25,8 @@ function addElFilms(results) {
               <ul class="glide__slides" id="glide__slides"></ul>
           </div>
           <div class="glide__arrows" data-glide-el="controls">
-          <button class="glide__arrow glide__arrow--left" data-glide-dir="<">&#5130;</button>
-         <button class="glide__arrow glide__arrow--right" data-glide-dir=">">&#5125;</button>
+          <button class="glide__arrow glide__arrow--left" data-glide-dir="⮜">&#11164;</button>
+         <button class="glide__arrow glide__arrow--right" data-glide-dir="⮞">&#11166;</button>
         </div>
       </div>`;
 
@@ -40,7 +37,7 @@ function addElFilms(results) {
   results.forEach(el => {
     let image = createElement('img', {
       class: 'cards__image-poster',
-      src: `https://image.tmdb.org/t/p/w500${el.poster_path}`,
+      src: `https://image.tmdb.org/t/p/w154${el.poster_path}`,
       onerror: `this.onerror=null;this.src='https://i.ibb.co/4ThsTsv/poster-coming-soon.jpg'`,
       alt: 'film__poster',
       id: el.id,
@@ -118,8 +115,8 @@ function changeStyleArrow() {
           outline: none;
           box-shadow: none;
           border-radius: 50%;
-          padding: 4px 7px;
           background-color: rgba(0, 0, 0, 0.4);
+          z-index:0;
         `;
   });
 
