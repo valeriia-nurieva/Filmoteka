@@ -7,7 +7,7 @@ color: rgb(0, 0, 0)
 }
 .color {
     color: #fff;
-  background-color: rgba(0, 0, 0, 0.74);
+//   background-color: rgba(0, 0, 0, 0.74);
 }
 .ichangeBgc__svg {
   color: #fff;
@@ -32,8 +32,9 @@ color: #FFFFFF;
 // #FF6B08;
 
 .gallery__image {
-
-  transition: transform 0.5s ease;
+ object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.6s ease;
 }.gallery__image:hover {
   transform: scale(1.05);
 }
