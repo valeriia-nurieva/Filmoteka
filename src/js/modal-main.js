@@ -152,6 +152,7 @@ function createMarkup({
   const markup = `<div class="modal_flex">
             <img
             src="https://image.tmdb.org/t/p/w500${poster_path}"
+            onerror="this.onerror=null;this.src='https://i.ibb.co/4ThsTsv/poster-coming-soon.jpg'"
             alt="Movie poster"
             class="modal_poster"
             width="375"
