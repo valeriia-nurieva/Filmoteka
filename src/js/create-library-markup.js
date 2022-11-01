@@ -23,6 +23,7 @@ export function createLibraryMarkup({
             <img
               class="film-card__img"
               src="${BASE_IMG_URL}${poster_path}"
+              onerror="this.onerror=null;this.src='https://i.ibb.co/4ThsTsv/poster-coming-soon.jpg'"
               alt="Movie poster"
               loading="lazy"
               id=${id}
