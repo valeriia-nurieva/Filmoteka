@@ -2,6 +2,7 @@ import axios from 'axios';
 import { refs } from './refs';
 import Api from './FetchApi';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
+import { createLibraryMarkup } from './create-library-markup';
 
 const loadingParams = {
   svgColor: '#FF6B08',
@@ -35,8 +36,8 @@ function onCardClick(e) {
   }
 
   fetchMovie(e.target.id)
-    .then(Loading.pulse(loadingParams))
-    .then(createMarkup)
+    .then(Loading.pulse(loadingParams)) 
+    .then(createMarkup) 
     .then(() => {
       const btnWatched = document.querySelector('.btn-watched');
       const btnQueue = document.querySelector('.btn-queue');
@@ -44,15 +45,19 @@ function onCardClick(e) {
       btnQueue.addEventListener('click', onBtnQueue);
 
       const getWatchedMovies = localStorage.getItem('watched');
-      const getWatchedMoviesParsed = JSON.parse(getWatchedMovies);
-      if (getWatchedMoviesParsed.includes(e.target.id)) {
-        btnWatched.textContent = 'remove from watched';
+      if (getWatchedMovies) {
+        const getWatchedMoviesParsed = JSON.parse(getWatchedMovies);
+        if (getWatchedMoviesParsed.includes(e.target.id)) {
+          btnWatched.textContent = 'remove from watched';
+        }
       }
 
       const getQueueMovies = localStorage.getItem('queue');
-      const getQueueMoviesParsed = JSON.parse(getQueueMovies);
-      if (getQueueMoviesParsed.includes(e.target.id)) {
-        btnQueue.textContent = 'remove from queue';
+      if (getQueueMovies) {
+        const getQueueMoviesParsed = JSON.parse(getQueueMovies);
+        if (getQueueMoviesParsed.includes(e.target.id)) {
+          btnQueue.textContent = 'remove from queue';
+        }
       }
 
       function onBtnWatched() {
@@ -76,6 +81,18 @@ function onCardClick(e) {
           savedWatchedMoviesData.splice(index, 1);
           const savedWatchedMoviesParsed = JSON.stringify(savedWatchedMoviesData);
           localStorage.setItem('watched', savedWatchedMoviesParsed);
+          const savedQueueMovies = localStorage.getItem('queue');
+          const savedQueueMoviesData = JSON.parse(savedQueueMovies);
+          const allMovies = [...savedWatchedMoviesData, ...savedQueueMoviesData];
+          const allUniqeMovies = allMovies.filter((data, index, array) => array.indexOf(data) === index);
+          refs.listLib.innerHTML = "";
+          allUniqeMovies.map((idNumber) => {
+            fetchMovie(idNumber).then(response => {
+              const markup = createLibraryMarkup(response);
+              refs.listLib.insertAdjacentHTML('beforeend', markup);
+            })
+          })
+          
         }
       }
       function onBtnQueue() {
@@ -98,6 +115,17 @@ function onCardClick(e) {
           savedQueueMoviesData.splice(index, 1);
           const savedWatchedMoviesParsed = JSON.stringify(savedQueueMoviesData);
           localStorage.setItem('queue', savedWatchedMoviesParsed);
+          const savedWatchedMovies = localStorage.getItem('watched');
+          const savedWatchedMoviesData = JSON.parse(savedWatchedMovies);
+          const allMovies = [...savedWatchedMoviesData, ...savedQueueMoviesData];
+          const allUniqeMovies = allMovies.filter((data, index, array) => array.indexOf(data) === index);
+          refs.listLib.innerHTML = "";
+          allUniqeMovies.map((idNumber) => {
+            fetchMovie(idNumber).then(response => {
+              const markup = createLibraryMarkup(response);
+              refs.listLib.insertAdjacentHTML('beforeend', markup);
+            })
+          })
         }
       }
     })

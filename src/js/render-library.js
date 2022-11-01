@@ -44,7 +44,7 @@ function init() {
 function onWatchedClick() {
     if (saveDataAll) {
         refs.listLib.innerHTML = '';
-    try {
+      try {
       Loading.pulse(loadingParams);
       saveDataWatched.map(id => {
         fetch.getFilmDetails(id).then(promise => {
