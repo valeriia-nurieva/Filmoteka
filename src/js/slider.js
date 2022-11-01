@@ -5,24 +5,24 @@ import Glide from '@glidejs/glide';
 const fetch = new FetchFilms();
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import SimpleLightbox from 'simplelightbox';
+import './modal-main';
 
 const slider = document.querySelector('.swiper-wrapper');
 console.log(slider);
 
-renderCard()
-export default async function renderCard(){
-    const { results , total_results  } = await fetch.getSetFilms();  
-     addElFilms(results);
-     console.log(results);
-     console.log(total_results);
-     
-  };
+renderCard();
+export default async function renderCard() {
+  const { results, total_results } = await fetch.getSetFilms();
+  addElFilms(results);
+  console.log(results);
+  console.log(total_results);
+}
 
-  fetch.incrementPage();
-  function addElFilms(results) {
-    slider.innerHTML = '';
-  
-    const markup = `
+fetch.incrementPage();
+function addElFilms(results) {
+  slider.innerHTML = '';
+
+  const markup = `
     <div class="glide">
           <div class="glide__track" data-glide-el="track">
               <ul class="glide__slides" id="glide__slides"></ul>
@@ -32,16 +32,17 @@ export default async function renderCard(){
          <button class="glide__arrow glide__arrow--right" data-glide-dir=">">&#5125;</button>
         </div>
       </div>`;
-  
-    slider.insertAdjacentHTML('beforeend', markup);
-  
-    const slidesContainer = document.querySelector('.glide__slides');
-    let arrFilmTrends = [];
+
+  slider.insertAdjacentHTML('beforeend', markup);
+
+  const slidesContainer = document.querySelector('.glide__slides');
+  let arrFilmTrends = [];
   results.forEach(el => {
     let image = createElement('img', {
       class: 'cards__image-poster',
       src: `https://image.tmdb.org/t/p/w500${el.poster_path}`,
       alt: 'film__poster',
+      id: el.id,
     });
 
     let li = createElement(
@@ -50,18 +51,18 @@ export default async function renderCard(){
         class: 'glide__slide glide__slide--main',
         id: `${el.id}`,
       },
-      image,
+      image
     );
     arrFilmTrends.push(li);
   });
 
   slidesContainer.append(...arrFilmTrends);
-changeStyleArrow();
-    glide.destroy();
-    let glid = new Glide('.glide', config);
-    glid.mount();
+  changeStyleArrow();
+  glide.destroy();
+  let glid = new Glide('.glide', config);
+  glid.mount();
 
-    simpleLightbox();
+  simpleLightbox();
 }
 
 export const createElement = (nodeName, options, children) => {
@@ -92,7 +93,6 @@ export const createElement = (nodeName, options, children) => {
   return nodeElement;
 };
 
-      
 function simpleLightbox() {
   let lightbox = new SimpleLightbox('.glide__slide', {
     captions: false,
@@ -101,37 +101,29 @@ function simpleLightbox() {
     doubleTapZoom: 5,
   });
   lightbox.refresh();
-  
 }
- 
 
-    
-  
-  
-  //after render slider, change arrow style function
-  
-  function changeStyleArrow() {
-    const refs = {
-      left: document.querySelector('.glide__arrow--left'),
-      right: document.querySelector('.glide__arrow--right'),
-      current: document.querySelectorAll('.glide__arrow'),
-    };
-  
-    refs.current.forEach(el => {
-      el.style.cssText = `
+//after render slider, change arrow style function
+
+function changeStyleArrow() {
+  const refs = {
+    left: document.querySelector('.glide__arrow--left'),
+    right: document.querySelector('.glide__arrow--right'),
+    current: document.querySelectorAll('.glide__arrow'),
+  };
+
+  refs.current.forEach(el => {
+    el.style.cssText = `
           outline: none;
           box-shadow: none;
           border-radius: 50%;
           padding: 4px 7px;
           background-color: rgba(0, 0, 0, 0.4);
         `;
-    });
-  
-    refs.left.style.left = '3px';
-    refs.right.style.right = '4px';
-  }
-  
-  // click slider el open modal
-  
-  
+  });
 
+  refs.left.style.left = '3px';
+  refs.right.style.right = '4px';
+}
+
+// click slider el open modal
