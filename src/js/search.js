@@ -4,6 +4,7 @@ import SimpleLightbox from 'simplelightbox';
 import { createMarkup } from './create-markup';
 import { refs } from './refs';
 import { Notify } from 'notiflix';
+import pagination from './pagination';
 
 const fetch = new FetchFilms();
 const onSearchForm = document.querySelector('#search-form');
@@ -20,7 +21,10 @@ export default async function onSearch(e) {
     if (!fetch.searchQuery) {
       searchError.textContent = 'Please enter your search data.';
     } else {
-      const { results, total_results } = await fetch.getFilmsByName();
+      const { results, total_results, page, total_pages } = await fetch.getFilmsByName();
+
+      pagination(page, total_pages);
+      
       if (!results.length) {
         searchError.textContent =
           'Search result not successful. Enter the correct movie name and';
