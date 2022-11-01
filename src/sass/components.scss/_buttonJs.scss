@@ -12,6 +12,10 @@
 
 .iconJs {
   width: 25px;
-  color: #ffda08;
+ 
   fill: #ff6b08;
+  &:focus,
+  &:hover {
+    fill: #ff001b;
+  }
 }

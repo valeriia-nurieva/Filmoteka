@@ -15,37 +15,33 @@ searchError.textContent = '';
 
 export default async function onSearch(e) {
   e.preventDefault();
-
   fetch.searchQuery = e.currentTarget.elements.searchQuery.value.trim();
-
-
   try {
-    if (fetch.searchQuery === '') {
+    if (!fetch.searchQuery) {
       searchError.textContent = 'Please enter your search data.';
     } else {
-      const { results} = await fetch.getFilmsByName();
-
-      if (results.length === 0) {
-        setTimeout(
-          (searchError.textContent =
-            'Search result not successful. Enter the correct movie name and'),
-          0
-        );
+      const { results, total_results } = await fetch.getFilmsByName();
+      if (!results.length) {
+        searchError.textContent =
+          'Search result not successful. Enter the correct movie name and';
       } else {
-
-      clearList();
-
-        createMarkup(results);
+        if (!total_results) {
+          //  return searchError.textContent = 'Sorry, but your movie was not found';
+        } else {
+          clearList();
+          createMarkup(results);
+        }
       }
     }
+  
   } catch (error) {
-    searchError.textContent ="We're sorry, but you've reached the end of search results.";
-  }
+    searchError.textContent = 'Sorry, but your movie was not found'
+  };
 }
 
 function clearList() {
   refs.listHome.innerHTML = '';
         searchError.textContent = '';
 
-}
+  };
 
