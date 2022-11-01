@@ -2,7 +2,7 @@ import Glide from '@glidejs/glide';
 
 export const config = {
   type: 'carousel',
-  perView: 7,
+  perView: 5,
   autoplay: 2500,
   gap: 15,
   touchRatio: 0.1,
@@ -18,9 +18,9 @@ export const config = {
     // 1600: {
     //   perView: 8,
     // },
-    1280: {
-      perView: 7,
-    },
+    // 1280: {
+    //   perView: 7,
+    // },
     1023: {
       perView: 5,
     },
