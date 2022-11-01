@@ -78,6 +78,14 @@ rgba(47, 48, 58, 0.4)),url(../images/main_bg_img_desktop_2x-min.jpg);
   
 }
 
+ 
+  @media screen and (max-width: 768px){
+  .filmoteka-text {
+    display: none;
+  }
+}
+
+
 
 .midnight{
   margin-top: 7px;
