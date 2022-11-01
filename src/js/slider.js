@@ -37,7 +37,7 @@ function addElFilms(results) {
   results.forEach(el => {
     let image = createElement('img', {
       class: 'cards__image-poster',
-      src: `https://image.tmdb.org/t/p/w154${el.poster_path}`,
+      src: `https://image.tmdb.org/t/p/w500${el.poster_path}`,
       onerror: `this.onerror=null;this.src='https://i.ibb.co/4ThsTsv/poster-coming-soon.jpg'`,
       alt: 'film__poster',
       id: el.id,

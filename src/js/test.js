@@ -2,7 +2,7 @@ import Glide from '@glidejs/glide';
 
 export const config = {
   type: 'carousel',
-  perView: 10,
+  perView: 7,
   autoplay: 2500,
   gap: 15,
   touchRatio: 0.1,
@@ -12,12 +12,12 @@ export const config = {
   animationTimingFunc: 'ease-out',
   peek: { before: 50, after: 50 },
   breakpoints: {
-    2000: {
-      perView: 10,
-    },
-    1600: {
-      perView: 8,
-    },
+    // 2000: {
+    //   perView: 10,
+    // },
+    // 1600: {
+    //   perView: 8,
+    // },
     1280: {
       perView: 7,
     },
