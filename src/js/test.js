@@ -40,4 +40,3 @@ export const options = {
 
 export const glide = new Glide('.glide', config);
 export const glideFooter = new Glide('.glide_footer', options);
-

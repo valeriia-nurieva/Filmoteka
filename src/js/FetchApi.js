@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Notiflix from 'notiflix';
 
 const API_KEY = 'd9d1e4a74b16060862fb47c08a2dac20';
 const BASE_URL = 'https://api.themoviedb.org/3/';
@@ -7,47 +8,35 @@ export default class FetchFilms {
   constructor() {
     this.page = 1;
     this.searchQuery = '';
-
   }
 
   /////Тренди
   async getTrendFilms() {
-   
-    
-      const { data } = await axios.get(
-        `${BASE_URL}trending/movie/day?api_key=${API_KEY}&adult=false`
+    const { data } = await axios.get(
+      `${BASE_URL}trending/movie/day?api_key=${API_KEY}&adult=false`
     );
-  
-      return data;
-   
+
+    return data;
   }
 
   async getSetFilms() {
-   
-    
     const { data } = await axios.get(
       `${BASE_URL}/movie/popular?api_key=${API_KEY}&adult=false`
-  );
+    );
 
     return data;
- 
-}
+  }
   /////пошук фильма
   async getFilmsByName() {
- 
-      const searchParams = new URLSearchParams({
-        api_key: API_KEY,
-        query: this.searchQuery,
-        language: 'en-US',
-        page: this.page,
-        include_adult: false, /// контент для дорослих и тд
-      });
-;
-      const { data } = await axios.get(
-        `${BASE_URL}search/movie?${searchParams}`
-      );
-      return data;
-    
+    const searchParams = new URLSearchParams({
+      api_key: API_KEY,
+      query: this.searchQuery,
+      language: 'en-US',
+      page: this.page,
+      include_adult: false, /// контент для дорослих и тд
+    });
+    const { data } = await axios.get(`${BASE_URL}search/movie?${searchParams}`);
+    return data;
   }
   ////Посилання на документацію для запиту повної інформації про кінофільм для сторінки кінофільму:
   async getFilmDetails(id) {
@@ -56,7 +45,7 @@ export default class FetchFilms {
       const { data } = await axios.get(url);
       return data;
     } catch (error) {
-      Notify.failure('Oops, an error occurred');
+      Notiflix.Notify.failure('Oops, an error occurred');
     }
   }
   ////Посилання на документацію для запиту повної інформації про можливий трейлер на YouTube:
@@ -66,7 +55,7 @@ export default class FetchFilms {
       const { data } = await axios.get(url);
       return data;
     } catch (error) {
-      Notify.failure('Oops, an error occurred');
+      Notiflix.Notify.failure('Oops, an error occurred');
     }
   }
 
