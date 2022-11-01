@@ -1,7 +1,7 @@
 import { refs } from './js/refs';
 import { TmdbApi } from './js/TMDB-api';
 import { createMarkup } from './js/create-markup';
-
+import '../node_modules/basiclightbox/dist/basicLightbox.min.css';
 import './js/btn-back-to-top';
 
 import './js/modal-main';
@@ -9,8 +9,6 @@ import './js/modal-main';
 import FetchFilms from './js/FetchApi';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 const fetch = new FetchFilms();
-
-
 
 const loadingParams = {
   svgColor: '#FF6B08',

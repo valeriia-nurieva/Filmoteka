@@ -1,4 +1,4 @@
-import axios from 'axios';
+import * as basicLightbox from 'basiclightbox';
 import { refs } from './refs';
 import Api from './FetchApi';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
@@ -16,11 +16,6 @@ refs.backdrop.addEventListener('click', onBackdropClick);
 refs.listHome.addEventListener('click', onCardClick);
 
 const api = new Api();
-// function getFilmID(id) {
-//   return axios.get(
-//     `https://api.themoviedb.org/3/movie/${id}?api_key=1d9e78535f6a01dcc41594da81e379a7&adult=false`
-//   );
-// }
 
 function fetchMovie(id) {
   return api.getFilmDetails(id).then(response => {
@@ -28,6 +23,11 @@ function fetchMovie(id) {
   });
 }
 
+function fetchVideo(id) {
+  return api.getFilmVideo(id).then(response => {
+    return response;
+  });
+}
 function onCardClick(e) {
   e.preventDefault();
 
@@ -36,9 +36,30 @@ function onCardClick(e) {
   }
 
   fetchMovie(e.target.id)
-    .then(Loading.pulse(loadingParams)) 
-    .then(createMarkup) 
+    .then(Loading.pulse(loadingParams))
+    .then(createMarkup)
     .then(() => {
+      const btn = document.querySelector('.btn-trailer');
+      btn.addEventListener('click', youTube);
+      function youTube() {
+        fetchVideo(e.target.id)
+          .then(data => {
+            if (data.results.length === 0) {
+              return;
+            }
+            let key = data.results[0].key;
+            return key;
+          })
+          .then(key => renderTrailer(key));
+      }
+
+      function renderTrailer(key) {
+        const instance = basicLightbox.create(`
+    <iframe src="https://www.youtube.com/embed/${key}" width="560" height="315" autoplay=1&mute=1&controls=1 ></iframe>
+`);
+        instance.show();
+      }
+
       const btnWatched = document.querySelector('.btn-watched');
       const btnQueue = document.querySelector('.btn-queue');
       btnWatched.addEventListener('click', onBtnWatched);
@@ -79,20 +100,26 @@ function onCardClick(e) {
             movie => movie === e.target.id
           );
           savedWatchedMoviesData.splice(index, 1);
-          const savedWatchedMoviesParsed = JSON.stringify(savedWatchedMoviesData);
+          const savedWatchedMoviesParsed = JSON.stringify(
+            savedWatchedMoviesData
+          );
           localStorage.setItem('watched', savedWatchedMoviesParsed);
           const savedQueueMovies = localStorage.getItem('queue');
           const savedQueueMoviesData = JSON.parse(savedQueueMovies);
-          const allMovies = [...savedWatchedMoviesData, ...savedQueueMoviesData];
-          const allUniqeMovies = allMovies.filter((data, index, array) => array.indexOf(data) === index);
-          refs.listLib.innerHTML = "";
-          allUniqeMovies.map((idNumber) => {
+          const allMovies = [
+            ...savedWatchedMoviesData,
+            ...savedQueueMoviesData,
+          ];
+          const allUniqeMovies = allMovies.filter(
+            (data, index, array) => array.indexOf(data) === index
+          );
+          refs.listLib.innerHTML = '';
+          allUniqeMovies.map(idNumber => {
             fetchMovie(idNumber).then(response => {
               const markup = createLibraryMarkup(response);
               refs.listLib.insertAdjacentHTML('beforeend', markup);
-            })
-          })
-          
+            });
+          });
         }
       }
       function onBtnQueue() {
@@ -117,15 +144,20 @@ function onCardClick(e) {
           localStorage.setItem('queue', savedWatchedMoviesParsed);
           const savedWatchedMovies = localStorage.getItem('watched');
           const savedWatchedMoviesData = JSON.parse(savedWatchedMovies);
-          const allMovies = [...savedWatchedMoviesData, ...savedQueueMoviesData];
-          const allUniqeMovies = allMovies.filter((data, index, array) => array.indexOf(data) === index);
-          refs.listLib.innerHTML = "";
-          allUniqeMovies.map((idNumber) => {
+          const allMovies = [
+            ...savedWatchedMoviesData,
+            ...savedQueueMoviesData,
+          ];
+          const allUniqeMovies = allMovies.filter(
+            (data, index, array) => array.indexOf(data) === index
+          );
+          refs.listLib.innerHTML = '';
+          allUniqeMovies.map(idNumber => {
             fetchMovie(idNumber).then(response => {
               const markup = createLibraryMarkup(response);
               refs.listLib.insertAdjacentHTML('beforeend', markup);
-            })
-          })
+            });
+          });
         }
       }
     })
@@ -148,6 +180,7 @@ function createMarkup({
   genres,
   overview,
   poster_path,
+  id,
 }) {
   const markup = `<div class="modal_flex">
             <img
@@ -169,7 +202,9 @@ function createMarkup({
               <h3 class="modal_movie-data">Genre</h3>
             </div>
             <div class="modal_data-text-box">
-             <p class="modal_data-text"><span class="modal_text-span">${vote_average.toFixed(1)}</span>/${vote_count}</p>
+             <p class="modal_data-text"><span class="modal_text-span">${vote_average.toFixed(
+               1
+             )}</span>/${vote_count}</p>
               <p class="modal_data-text">${popularity.toFixed(1)}</p>
               <p class="modal_data-text">${original_title}</p>
               <p class="modal_data-text">${genres.map(genre => genre.name)}</p>
@@ -183,6 +218,9 @@ function createMarkup({
             </button>
             <button type="button" class="modal_button btn-queue">
               add to queue
+            </button>
+            <button type="button" class="modal_button btn-trailer" id=${id}>
+              watch trailer
             </button>
           </div>
         </div>`;
