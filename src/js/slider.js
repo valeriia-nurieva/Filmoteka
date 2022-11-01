@@ -25,8 +25,8 @@ function addElFilms(results) {
               <ul class="glide__slides" id="glide__slides"></ul>
           </div>
           <div class="glide__arrows" data-glide-el="controls">
-          <button class="glide__arrow glide__arrow--left" data-glide-dir="⮜">&#11164;</button>
-         <button class="glide__arrow glide__arrow--right" data-glide-dir="⮞">&#11166;</button>
+          <button class="glide__arrow glide__arrow--left" data-glide-dir="<">&#5130;</button>
+         <button class="glide__arrow glide__arrow--right" data-glide-dir=">">&#5125;</button>
         </div>
       </div>`;
 
