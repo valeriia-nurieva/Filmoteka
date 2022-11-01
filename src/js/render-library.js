@@ -19,7 +19,7 @@ init();
 refs.btnLibWatched.addEventListener('click', onWatchedClick);
 refs.btnLibQueue.addEventListener('click', onQueueClick);
 
-if (saveDataAll.length === 0) {
+if (saveDataAll.length === false) {
   refs.blockEmptyLib.classList.remove('is-hidden');
 }
 
