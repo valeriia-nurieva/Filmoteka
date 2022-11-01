@@ -5,6 +5,6 @@ export const refs = {
   createData: document.querySelector('.create-data'),
   modalCloseBtn: document.querySelector('.modal__close'),
   btnLibWatched: document.querySelector('.watched-js'),
-  btnLibQueue: document.querySelector('.queue'),
+  btnLibQueue: document.querySelector('.queue-js'),
   blockEmptyLib: document.querySelector('.film-lib-empty-js'),
 };

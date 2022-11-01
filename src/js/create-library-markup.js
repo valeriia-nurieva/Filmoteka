@@ -5,7 +5,8 @@ export function createLibraryMarkup({
   poster_path,
   title,
   release_date,
-  id
+  id,
+  vote_average
 }) {
   let genresArr = [];
   genres.map((genre) =>
@@ -17,6 +18,7 @@ export function createLibraryMarkup({
   }
   const genresStr = genresArr.join(', ');
   const year = release_date.slice(0, 4);
+  const rating = vote_average.toFixed(1);
   return `<li class="grid__item film-card ">
         <a href="#" data-id="${id}" class="list">
           <div class="film-card__thumb">
@@ -33,5 +35,6 @@ export function createLibraryMarkup({
         </a>
         <p class="film-card__genres">${genresStr}</p>
         <span class="film-card__year">${year}</span>
+        <span class="film-card__rating">${rating}</span>
       </li>`;
 }
