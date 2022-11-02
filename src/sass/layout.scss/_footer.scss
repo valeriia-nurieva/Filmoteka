@@ -1,9 +1,12 @@
 .footer {
-
+    background-color: $background-color;
+    
     &__container {
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
+
+        
 
         padding-top: 30px;
         padding-bottom: 30px;
@@ -13,7 +16,7 @@
         font-weight: 400;
         font-size: 14px;
         line-height: 1.14;
-        color: $secondary-text-color;
+        color: inherit;
         text-align: center;
 
 
@@ -37,11 +40,12 @@
     &__icon {
         margin-left: 10px;
         margin-right: 10px;
+        animation: pulsation 4s linear 1s infinite;
     }
 }
 
 .footer__link {
-    color: $secondary-text-color;
+    color: inherit;
     cursor: pointer;
     text-decoration: underline;
 
@@ -54,5 +58,39 @@
     &:hover,
     :focus {
         color: $accent-text-color;
+    }
+}
+
+@keyframes pulsation {
+    0% {
+        transform: scale(1);
+    }
+
+    30% {
+        transform: scale(1);
+    }
+
+    40% {
+        transform: scale(1.5);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+
+    60% {
+        transform: scale(1);
+    }
+
+    70% {
+        transform: scale(1.5);
+    }
+
+    80% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1);
     }
 }
