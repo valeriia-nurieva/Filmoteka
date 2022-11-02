@@ -23,7 +23,7 @@ if (!savedDataAllQniue.length) {
   refs.blockEmptyLib.classList.remove('is-hidden');
 }
 
-function init() {
+export function init() {
   if (saveDataAll) {
     try {
       Loading.pulse(loadingParams);
@@ -42,8 +42,9 @@ function init() {
 }
 
 function onWatchedClick() {
-    if (saveDataAll) {
-        refs.listLib.innerHTML = '';
+  if (saveDataAll) {
+      const saveDataWatched = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_WATCHED));
+      refs.listLib.innerHTML = '';
       try {
       Loading.pulse(loadingParams);
       saveDataWatched.map(id => {
@@ -61,7 +62,8 @@ function onWatchedClick() {
 }
 
 function onQueueClick() {
-    if (saveDataAll) {
+  if (saveDataAll) {
+      const saveDataQueue = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_QUEUE));
         refs.listLib.innerHTML = '';
     try {
       Loading.pulse(loadingParams);
