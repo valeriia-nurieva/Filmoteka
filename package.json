@@ -24,6 +24,7 @@
     "daisyui": "^2.36.1",
     "modern-normalize": "^1.1.0",
     "notiflix": "^3.2.5",
+    "pagination": "^0.4.6",
     "simplelightbox": "^2.10.4",
     "swiper": "^8.4.4",
     "theme-change": "^2.2.0",
@@ -37,7 +38,8 @@
     "posthtml-include": "^1.7.4",
     "process": "^0.11.10",
     "tailwindcss": "^3.2.1",
-    "themes-switch": "^1.1.0"
+    "themes-switch": "^1.1.0",
+    "util": "^0.12.5"
   },
   "browserslist": "> 0.5%, last 2 versions, not dead"
 }

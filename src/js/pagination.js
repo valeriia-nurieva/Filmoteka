@@ -1,5 +1,7 @@
-// import { FetchFilms } from './FetchApi';
+import  FetchFilms  from './FetchApi';
 // import { onSearch } from './search';
+import { createMarkup } from './create-markup';
+const fetch = new FetchFilms();
 
 // const inputRef = document.querySelector('.inputsearch');
 // const btn1Ref = document.querySelector('[data-index="1"]');
@@ -131,7 +133,7 @@ export default function pagination(currentPage, allPages) {
   let afterPage = currentPage + 1;
   let afterTwoPage = currentPage + 2;
   globalCurrentpage = currentPage;
-
+console.log(globalCurrentpage);
   if (currentPage > 1) {
     markup += '<li>&#129144;</li>'
   }
@@ -187,6 +189,7 @@ function handlerPagination(evt) {
   if (evt.target.textContent === "...") {
     return
   }
-  const page = evt.target.textContent
-  console.log(page);
+  let pages = evt.target.textContent
+      console.log(pages);
+
 }
