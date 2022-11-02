@@ -4,72 +4,101 @@ import SimpleLightbox from 'simplelightbox';
 import { createMarkup } from './create-markup';
 import { refs } from './refs';
 import { Notify } from 'notiflix';
+import pagination from './paginationSearch';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 const fetch = new FetchFilms();
+
 const onSearchForm = document.querySelector('#search-form');
 onSearchForm.addEventListener('submit', onSearch);
 const searchError = document.querySelector('.search-error');
 const sliderTitle = document.querySelector('slider-title');
-const pagPage = document.querySelector('.pagination');
+const pagPage = document.querySelector('.paginationSearch');
 const pagJs = document.querySelector('.pagJs');
+const sectionPagination = document.querySelector('.section-pagination');
+const sectionPaginationSearch = document.querySelector(
+  '.section-pagination_search'
+);
 
- const paginationWrapper= document.querySelector('.js-pagination-wrapper')
- const paginationPrevButton= document.querySelector('.pagination-prev-button')
- const paginationNextButton= document.querySelector('.pagination-next-button')
- const paginationContainer= document.querySelector('.movies__pagination-container')
-   
+// console.log(pagPage);
 
 searchError.textContent = '';
 export default async function onSearch(e) {
   e.preventDefault();
   fetch.searchQuery = e.currentTarget.elements.searchQuery.value.trim();
+  // console.log(e.currentTarget.elements.searchQuery.value);
   try {
     if (!fetch.searchQuery) {
       searchError.textContent = 'Please enter your search data.';
     } else {
-      const { results, total_results, page, total_pages } = await fetch.getFilmsByName();
+      const { results, total_results, page, total_pages } =
+        await fetch.getFilmsByName();
 
-      // pagination(page, total_pages);
-      
+      pagination(page, total_pages);
+
       if (!results.length) {
         searchError.textContent =
           'Search result not successful. Enter the correct movie name and';
+        searchError.style.color = '#ffa500';
       } else {
         if (!total_results) {
-          //  return searchError.textContent = 'Sorry, but your movie was not found';
+          return (searchError.textContent =
+            'Sorry, but your movie was not found');
+          searchError.style.color = '#f00';
         } else {
+          if (sectionPaginationSearch.classList.contains('is-hidden')) {
+            sectionPaginationSearch.classList.remove('is-hidden');
+          }
           // sliderTitle.classList.add('is-hidden');
+          // console.log(total_results < 20);
+          if (total_results < 20) {
+            sectionPaginationSearch.classList.add('is-hidden');
+          } else {
+            pagination(page, total_pages);
+          }
           clearList();
+          sectionPagination.classList.add('is-hidden');
           createMarkup(results);
-          clickPag()
+
+          searchError.textContent = 'movies found';
+          searchError.style.color = '#00ff00';
         }
       }
     }
-  
   } catch (error) {
-    searchError.textContent = 'Sorry, but your movie was not found'
-  };
+    searchError.textContent = 'Sorry, but your movie was not found';
+    searchError.style.color = '#f00';
+  }
 }
 
-// function clearList() {
-//   r.innerHTML = '';
-//         searchError.textContent = '';
-
-//   };
-
-pagPage.addEventListener('click', clickPag)
-
- async function clickPag(CurrentPage) {
-   CurrentPage = 1;
-
-   const { results, total_results, page, total_pages } = await fetch.getFilmsByName();
-console.log(CurrentPage === page);
-   if (CurrentPage = page) {
-     
-     pagination(CurrentPage, total_pages);
-     fetch.incrementPage()
-     clearList()
-     createMarkup(results);
+function clearList() {
+  pagJs.innerHTML = '';
+  searchError.textContent = '';
 }
-  
+
+pagPage.addEventListener('click', handlerPagination);
+
+async function handlerPagination(evt) {
+  if (evt.target.nodeName !== 'LI') {
+    return;
+  }
+  if (evt.target.textContent === '🡸') {
+    return (fetch.pages -= 1);
+  }
+  if (evt.target.textContent === '🡺') {
+    return (fetch.pages += 1);
+  }
+  if (evt.target.textContent === '...') {
+    return;
+  }
+  let pages = evt.target.textContent;
+
+  fetch.pages = pages;
+
+  const { results, total_results, page, total_pages } =
+    await fetch.getFilmsByName();
+  pagination(page, total_pages);
+  refs.listHome.innerHTML = '';
+  window.scrollTo({ top: 216, behavior: 'smooth' });
+  createMarkup(results);
 }

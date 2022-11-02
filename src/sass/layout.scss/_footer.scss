@@ -31,6 +31,7 @@
 
     &__text {
         margin-bottom: 10px;
+        color: $primary-text-color;
 
         @include tablet {
             margin-bottom: 0;
@@ -45,7 +46,7 @@
 }
 
 .footer__link {
-    color: inherit;
+    color: $primary-text-color;
     cursor: pointer;
     text-decoration: underline;
 
