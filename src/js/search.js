@@ -20,7 +20,7 @@ const sectionPaginationSearch = document.querySelector(
   '.section-pagination_search'
 );
 
-console.log(pagPage);
+// console.log(pagPage);
 
 searchError.textContent = '';
 export default async function onSearch(e) {
@@ -50,7 +50,7 @@ export default async function onSearch(e) {
             sectionPaginationSearch.classList.remove('is-hidden');
           }
           // sliderTitle.classList.add('is-hidden');
-          console.log(total_results < 20);
+          // console.log(total_results < 20);
           if (total_results < 20) {
             sectionPaginationSearch.classList.add('is-hidden');
           } else {
