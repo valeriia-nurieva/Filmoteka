@@ -1,44 +1,19 @@
-.container {
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-  padding-left: 15px;
-  padding-right: 15px;
-
-@media screen and (min-width: 320px) {
-    width: 320px;
-    padding-left: $tipycal-mob-margin;
-    padding-right: $tipycal-mob-margin;
-  }
- @media screen and (min-width: 768px) {
-  width: 768px;
-    padding-left: $tipycal-desk-margin;
-    padding-right: $tipycal-desk-margin;
- }
- @media screen and (min-width: 1280px) {
-  width: 1280px;
- }
-}
-
-
 header {
   background-position: center;
   background-color: $header-background-color;
   background-size: cover;
   background-repeat: no-repeat;
+  background-image: url(../images/lib-background-mob-x1.jpg);
 
-  @media screen and (min-width: 320px) {
-    background-image: url(../images/lib-background-mob-x1.jpg);
-    @media (min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi),
-      (min-resolution: 2dppx) {
-      background-image: url(../images/lib-background-mob-x2.jpg);
-    }
-    @media (min-device-pixel-ratio: 3),
-      (min-resolution: 288dpi),
-      (min-resolution: 3dppx) {
-      background-image: url(../images/lib-background-mob-x3.jpg);
-    }
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: url(../images/lib-background-mob-x2.jpg);
+  }
+  @media (min-device-pixel-ratio: 3),
+    (min-resolution: 288dpi),
+    (min-resolution: 3dppx) {
+    background-image: url(../images/lib-background-mob-x3.jpg);
   }
   @media screen and (min-width: 768px) {
     background-image: url(../images/lib-background-tab-x1.jpg);
@@ -69,9 +44,7 @@ header {
   }
 }
 .mobile {
-  @media screen and (min-width: 320px) {
-    display: block;
-  }
+  display: block;
   @media screen and (min-width: 768px) {
     display: flex;
   }
@@ -80,29 +53,25 @@ header {
   }
 }
 .nav-library {
-  @media screen and (min-width: 320px) {
-      display: block;
-      justify-content: center;
-    }
+  display: block;
+  justify-content: center;
+
   @media screen and (min-width: 768px) {
-      display: flex;
-    }
-    @media screen and (min-width: 1280px) {
-      display: flex;
-    }
-  
+    display: flex;
+  }
+  @media screen and (min-width: 1280px) {
+    display: flex;
+  }
 }
 .div {
-  @media screen and (min-width: 320px) {
-      display:flex
-    }
+  justify-content: space-between;
+  display: flex;
   @media screen and (min-width: 768px) {
-      display: flex
-    }
-     @media screen and (min-width: 1280px) {
-      display: flex
-     }
-  
+    display: flex;
+  }
+  @media screen and (min-width: 1280px) {
+    display: flex;
+  }
 }
 .nav__link-text {
   font-family: 'Roboto';
@@ -111,11 +80,9 @@ header {
   font-size: 30px;
   line-height: 35px;
   color: #fff;
-  @media screen and (min-width: 320px) {
-    display: none;
-  }
+  text-shadow: 4px 4px 2px rgba(150, 150, 150, 1);
+  display: none;
   @media screen and (min-width: 768px) {
-    
     display: flex;
   }
   @media screen and (min-width: 1280px) {
@@ -128,10 +95,7 @@ header {
   align-items: center;
   text-decoration: none;
   padding: 40px 0 0 0;
- 
-  @media screen and (min-width: 320px) {
-      
-    }
+
   @media screen and (min-width: 768px) {
     text-align: center;
     justify-content: center;
@@ -144,22 +108,20 @@ header {
 }
 .btn-list {
   display: flex;
+  justify-content: space-between;
   margin: 0;
   padding-left: 0;
   padding-right: 0;
-  @media screen and (min-width: 320px) {
-    padding-bottom: 60px;
-    }
+  padding-bottom: 60px;
   @media screen and (min-width: 768px) {
     justify-content: center;
     margin-top: 40px;
     padding-bottom: 60px;
-    }
-    @media screen and (min-width: 1280px) {
+  }
+  @media screen and (min-width: 1280px) {
     padding-top: 0;
     padding-bottom: 60px;
-    }
-  
+  }
 }
 
 .watched {
@@ -173,24 +135,22 @@ header {
   text-transform: uppercase;
   cursor: pointer;
   color: #fff;
-  
+
   background-color: transparent;
   border-radius: 5px;
   border: 1px solid rgba(255, 255, 255, 1);
-  @media screen and (min-width: 320px) {
-      margin-right: 20px;
-      width: 125px;
-      height: 45px;
-    }
+  margin-right: 10px;
+  width: 125px;
+  height: 45px;
   @media screen and (min-width: 768px) {
     margin-right: 30px;
     width: 150px;
-      height: 45px;
+    height: 45px;
   }
   @media screen and (min-width: 1280px) {
     margin-right: 15px;
     width: 150px;
-      height: 45px;
+    height: 45px;
   }
   transition: background-color $timing-function $cubic;
   &:hover {
@@ -222,31 +182,25 @@ header {
     filter: drop-shadow(0px 8px 43px rgba(255, 107, 1, 0.6));
     border-color: transparent;
   }
-    @media screen and (min-width: 320px) {
-    
-      width: 125px;
-      height: 45px;
-    }
-  
-    @media screen and (min-width: 768px) {
-    
-      width: 150px;
-      height: 45px;
-    }
-  
-    @media screen and (min-width: 1280px) {
-    
-      width: 150px;
-      height: 45px;
-    }
+
+  width: 125px;
+  height: 45px;
+
+  @media screen and (min-width: 768px) {
+    width: 150px;
+    height: 45px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 150px;
+    height: 45px;
+  }
 }
 .nav-list {
   display: flex;
-  @media screen and (min-width: 320px) {
-      margin: 0;
-      padding-left: 0;
-      padding-top: 45px;
-    }
+  margin: 0;
+  padding-left: 0;
+  padding-top: 45px;
   @media screen and (min-width: 768px) {
     margin: 0;
     padding-left: 0;
@@ -262,6 +216,9 @@ header {
   white-space: nowrap;
   height: 14px;
   &:not(:last-child) {
+    margin-right: 20px;
+  }
+  @include desktop {
     margin-right: 40px;
   }
 }
@@ -297,17 +254,17 @@ header {
   }
 }
 .icon-lib {
-  @media screen and (min-width: 320px) {
-      margin-right: 113px;;
-      margin-bottom: 70px;
-    }
+  box-shadow: 4px 4px 2px rgba(150, 150, 150, 1);
+  border-radius: 5px;
+  margin-right: 113px;
+  margin-bottom: 70px;
   @media screen and (min-width: 768px) {
-      margin-right: 10px;
-      margin-bottom: 0;
-    }
-    @media screen and (min-width: 1280px) {
-      margin-right: 10px;
-    }
+    margin-right: 10px;
+    margin-bottom: 0;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-right: 10px;
+  }
   animation: wiggle 2s linear infinite;
 }
 /* Keyframes */
@@ -341,16 +298,16 @@ header {
   }
 }
 
-.js-active{
+.js-active {
   background-color: #ff6b01;
   filter: drop-shadow(0px 8px 43px rgba(255, 107, 1, 0.6));
   border-color: transparent;
 }
 
-.icon_lib-cs{
-position: relative;
+.icon_lib-cs {
+  position: relative;
 }
-.icon_lib{
+.icon_lib {
   position: absolute;
 
   top: -12px;
