@@ -10,6 +10,8 @@ import FetchFilms from './js/FetchApi';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 const fetch = new FetchFilms();
 
+
+
 const loadingParams = {
   svgColor: '#FF6B08',
 };
