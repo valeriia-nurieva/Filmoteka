@@ -17,6 +17,10 @@ refs.listHome.addEventListener('click', onCardClick);
 
 const api = new Api();
 
+if (refs.sliderLink) {
+  refs.sliderLink.addEventListener('click', onCardClick);
+}
+
 function onCardClick(e) {
   e.preventDefault();
 

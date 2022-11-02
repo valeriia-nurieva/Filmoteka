@@ -7,10 +7,14 @@ import pagination from './pagination';
 const fetch = new FetchFilms();
 const LOCAL_STORAGE_KEY_WATCHED = 'watched';
 const LOCAL_STORAGE_KEY_QUEUE = 'queue';
-const saveDataWatched = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_WATCHED));
+const saveDataWatched = JSON.parse(
+  localStorage.getItem(LOCAL_STORAGE_KEY_WATCHED)
+);
 const saveDataQueue = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_QUEUE));
 const saveDataAll = saveDataWatched.concat(saveDataQueue);
-const savedDataAllQniue = saveDataAll.filter((data, index, array) => array.indexOf(data) === index);
+const savedDataAllQniue = saveDataAll.filter(
+  (data, index, array) => array.indexOf(data) === index
+);
 const loadingParams = {
   svgColor: '#FF6B08',
 };
@@ -76,9 +80,9 @@ console.log(pages);
 }
 
 function onWatchedClick() {
-    if (saveDataAll) {
-        refs.listLib.innerHTML = '';
-      try {
+  if (saveDataAll) {
+    refs.listLib.innerHTML = '';
+    try {
       Loading.pulse(loadingParams);
       saveDataWatched.map(id => {
         fetch.getFilmDetails(id).then(promise => {
@@ -95,8 +99,8 @@ function onWatchedClick() {
 }
 
 function onQueueClick() {
-    if (saveDataAll) {
-        refs.listLib.innerHTML = '';
+  if (saveDataAll) {
+    refs.listLib.innerHTML = '';
     try {
       Loading.pulse(loadingParams);
       saveDataQueue.map(id => {
