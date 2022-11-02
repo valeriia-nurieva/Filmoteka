@@ -1,7 +1,6 @@
 import { refs } from './js/refs';
 import { TmdbApi } from './js/TMDB-api';
 import { createMarkup } from './js/create-markup';
-
 import '../node_modules/basiclightbox/dist/basicLightbox.min.css';
 import './js/btn-back-to-top';
 import pagination from './js/pagination';
@@ -13,6 +12,8 @@ import FetchFilms from './js/FetchApi';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 const fetch = new FetchFilms();
 const pagPage = document.querySelector('.pagination');
+
+
 
 const loadingParams = {
   svgColor: '#FF6B08',
