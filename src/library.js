@@ -2,7 +2,7 @@ import './js/render-library';
 import './js/btn-back-to-top';
 import './js/create-library-markup';
 import './js/modal-main';
-
+import svgBtn from './js/svgBgc'
 const watchedBtn = document.querySelector('.watched');
 const queueBtn = document.querySelector('.queue');
 

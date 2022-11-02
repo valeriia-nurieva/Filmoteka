@@ -59,14 +59,18 @@ rgba(47, 48, 58, 0.4)),url(../images/main_bg_img_desktop_2x-min.jpg);
 }
 
 .icon {
+
   top: 45;
   margin-right: 10px;
-  animation: wiggle 2s linear infinite;
   
+  animation: wiggle 2s linear infinite;
+  z-index: 3;
   }
 
 
 .logo-header {
+  
+  position: relative;
   height: 35px;
   font-family: 'Roboto';
   font-style: normal;
@@ -75,6 +79,7 @@ rgba(47, 48, 58, 0.4)),url(../images/main_bg_img_desktop_2x-min.jpg);
   line-height: 35px;
   text-decoration: none;
   color: #ffffff;
+   text-shadow: 4px 4px 2px rgba(150, 150, 150, 1);
   
 }
 
@@ -103,6 +108,7 @@ rgba(47, 48, 58, 0.4)),url(../images/main_bg_img_desktop_2x-min.jpg);
   display: flex;
   justify-content: space-between;
   margin-bottom: 40px;
+  
 }
 
 .nav {
@@ -186,13 +192,17 @@ rgba(47, 48, 58, 0.4)),url(../images/main_bg_img_desktop_2x-min.jpg);
   height: 30px;
   background-color: transparent;
   border: none;
-  color: #ffffff;
   border-bottom: 1px solid #ffffff;
   padding-bottom: 10px;
   display: block;
   margin-right: auto;
   margin-left: auto;
   margin-bottom: 20px;
+  &::placeholder {
+    color: #ffffff;
+
+  // font-size: 1.5em;
+}
 }
 
 .search-error {

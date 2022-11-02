@@ -259,6 +259,7 @@ header {
   }
 }
 .nav-list_item {
+  white-space: nowrap;
   height: 14px;
   &:not(:last-child) {
     margin-right: 40px;
@@ -344,4 +345,14 @@ header {
   background-color: #ff6b01;
   filter: drop-shadow(0px 8px 43px rgba(255, 107, 1, 0.6));
   border-color: transparent;
+}
+
+.icon_lib-cs{
+position: relative;
+}
+.icon_lib{
+  position: absolute;
+
+  top: -12px;
+  right: 0;
 }

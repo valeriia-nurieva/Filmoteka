@@ -55,6 +55,7 @@
       transform: scale(1.2);
       border-radius: 5px;
     }
+   
   }
 
 .slider-title {
@@ -80,6 +81,10 @@
     &:hover,
     &:focus {
       box-shadow: 0px 0px 5px 0px #ffffff;
+    
+      background: #c4c4c4;
+      box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
+    
     }
   }
   
