@@ -10,7 +10,7 @@ const loadingParams = {
 
 let watchedMovies = [];
 let queueMovies = [];
-
+refs.sliderLink.addEventListener('click', onCardClick);
 refs.modalCloseBtn.addEventListener('click', onCloseBtn);
 refs.backdrop.addEventListener('click', onBackdropClick);
 refs.listHome.addEventListener('click', onCardClick);
