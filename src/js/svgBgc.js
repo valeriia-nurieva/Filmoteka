@@ -6,27 +6,33 @@ const body = document.querySelector('.colorJs');
 ButtonSvg.addEventListener('click', changeColor);
 sun.classList.add('is-hidden');
 ButtonSvg.classList.add('ChangeColor');
-
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 let DARK = 'DARK';
 let LIGHT = 'LIGHT';
 // localStorage.setItem(LIGHT, addBgc);
 //   localStorage.setItem(LIGHT, removeBgc);
-
+const loadingParams = {
+  svgColor: '#FF6B08',
+};
 export default function changeColor() {
   if (body.classList.contains('color')) {
+     Loading.pulse(loadingParams);
     localStorage.setItem(LIGHT, (body.style.backgroundColor = '#FFF'));
     localStorage.removeItem(
       DARK,
       (body.style.backgroundColor = 'rgba(0, 0, 0, 0.74)')
     );
     addBgc();
+     Loading.remove();
   } else {
+     Loading.pulse(loadingParams);
     localStorage.removeItem(LIGHT, (body.style.backgroundColor = '#FFF'));
     localStorage.setItem(
       DARK,
       (body.style.backgroundColor = 'rgba(0, 0, 0, 0.74)')
     );
     removeBgc();
+     Loading.remove();
   }
 }
 function addBgc() {
