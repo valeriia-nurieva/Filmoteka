@@ -61,9 +61,9 @@ async function handlerPagination(evt) {
   console.log('fetch.pages', fetch.pages);
     const { results, total_results, page, total_pages } =
     await fetch.getTrendFilms();
+  pagination(page, total_pages);
   console.log(results);
-  refs.listHome.innerHTML = ''; //очищає бокс з картками
-  pagJs.innerHTML = ''; //очищає пагінацію
+  refs.listHome.innerHTML = ''; 
   createMarkup(results);
 }
 
