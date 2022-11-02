@@ -59,8 +59,6 @@ function addElFilms(results) {
   glide.destroy();
   let glid = new Glide('.glide', config);
   glid.mount();
-
- 
 }
 
 export const createElement = (nodeName, options, children) => {
@@ -91,9 +89,6 @@ export const createElement = (nodeName, options, children) => {
   return nodeElement;
 };
 
-
-
-
 function changeStyleArrow() {
   const refs = {
     left: document.querySelector('.glide__arrow--left'),
@@ -114,4 +109,3 @@ function changeStyleArrow() {
   refs.left.style.left = '3px';
   refs.right.style.right = '4px';
 }
-

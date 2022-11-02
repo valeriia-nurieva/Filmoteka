@@ -9,4 +9,5 @@ export const refs = {
   blockEmptyLib: document.querySelector('.film-lib-empty-js'),
   pagPage: document.querySelector('.pagination'),
   body: document.querySelector('.page'),
+  sliderLink: document.querySelector('.slider-link'),
 };

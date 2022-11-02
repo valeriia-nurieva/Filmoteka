@@ -8,7 +8,7 @@ import './js/modal-main';
 import FetchFilms from './js/FetchApi';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 const fetch = new FetchFilms();
-
+const sectionPagination = document.querySelector('.section-pagination_search');
 const loadingParams = {
   svgColor: '#FF6B08',
 };
@@ -54,6 +54,7 @@ async function handlerPagination(evt) {
     await fetch.getTrendFilms();
   pagination(page, total_pages);
   refs.listHome.innerHTML = '';
+    sectionPagination.classList.add('is-hidden');
   window.scrollTo({ top: 216, behavior: 'smooth' });
   createMarkup(results);
 }
