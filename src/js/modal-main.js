@@ -87,6 +87,21 @@ function onCardClick(e) {
 
           const watchedMoviesJson = JSON.stringify(watchedMovies);
           localStorage.setItem('watched', watchedMoviesJson);
+
+          if (refs.listLib) {
+          const savedQueueMovies = localStorage.getItem('queue');
+          const savedQueueMoviesData = JSON.parse(savedQueueMovies);
+          const allMovies = [...watchedMovies, ...savedQueueMoviesData];
+          const allUniqeMovies = allMovies.filter((data, index, array) => array.indexOf(data) === index); 
+          refs.listLib.innerHTML = '';
+          allUniqeMovies.map(idNumber => {
+          api.getFilmDetails(idNumber).then(response => {
+          const markup = createLibraryMarkup(response);
+          refs.listLib.insertAdjacentHTML('beforeend', markup);
+            });
+          })  
+          }
+
         } else {
           btnWatched.textContent = 'add to watched';
           const savedWatchedMovies = localStorage.getItem('watched');
@@ -99,7 +114,8 @@ function onCardClick(e) {
             savedWatchedMoviesData
           );
           localStorage.setItem('watched', savedWatchedMoviesParsed);
-          const savedQueueMovies = localStorage.getItem('queue');
+
+          if(refs.listLib) {const savedQueueMovies = localStorage.getItem('queue');
           const savedQueueMoviesData = JSON.parse(savedQueueMovies);
           const allMovies = [
             ...savedWatchedMoviesData,
@@ -114,7 +130,9 @@ function onCardClick(e) {
               const markup = createLibraryMarkup(response);
               refs.listLib.insertAdjacentHTML('beforeend', markup);
             });
-          });
+          })
+          }
+          
         }
       }
       function onBtnQueue() {
@@ -127,6 +145,21 @@ function onCardClick(e) {
           queueMovies.push(e.target.id);
           const queueMoviesJson = JSON.stringify(queueMovies);
           localStorage.setItem('queue', queueMoviesJson);
+
+          if (refs.listLib) {
+          const savedWatchedMovies = localStorage.getItem('watched');
+          const savedWatchedMoviesData = JSON.parse(savedWatchedMovies);
+          const allMovies = [...queueMovies, ...savedWatchedMoviesData];
+          const allUniqeMovies = allMovies.filter((data, index, array) => array.indexOf(data) === index);
+          refs.listLib.innerHTML = '';
+          allUniqeMovies.map(idNumber => {
+            api.getFilmDetails(idNumber).then(response => {
+              const markup = createLibraryMarkup(response);
+              refs.listLib.insertAdjacentHTML('beforeend', markup);
+            });
+          }) 
+         }
+
         } else {
           btnQueue.textContent = 'add to queue';
           const savedQueueMovies = localStorage.getItem('queue');
@@ -137,7 +170,8 @@ function onCardClick(e) {
           savedQueueMoviesData.splice(index, 1);
           const savedWatchedMoviesParsed = JSON.stringify(savedQueueMoviesData);
           localStorage.setItem('queue', savedWatchedMoviesParsed);
-          const savedWatchedMovies = localStorage.getItem('watched');
+
+         if(refs.listLib) {const savedWatchedMovies = localStorage.getItem('watched');
           const savedWatchedMoviesData = JSON.parse(savedWatchedMovies);
           const allMovies = [
             ...savedWatchedMoviesData,
@@ -152,7 +186,9 @@ function onCardClick(e) {
               const markup = createLibraryMarkup(response);
               refs.listLib.insertAdjacentHTML('beforeend', markup);
             });
-          });
+          })
+          }
+          
         }
       }
     })

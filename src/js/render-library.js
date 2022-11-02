@@ -40,7 +40,7 @@ if (!savedDataAllQniue.length) {
   refs.blockEmptyLib.classList.remove('is-hidden');
 }
 
-function init() {
+export function init() {
   if (saveDataAll) {
     try {
       Loading.pulse(loadingParams);
@@ -81,8 +81,9 @@ console.log(pages);
 
 function onWatchedClick() {
   if (saveDataAll) {
-    refs.listLib.innerHTML = '';
-    try {
+      const saveDataWatched = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_WATCHED));
+      refs.listLib.innerHTML = '';
+      try {
       Loading.pulse(loadingParams);
       saveDataWatched.map(id => {
         fetch.getFilmDetails(id).then(promise => {
@@ -100,7 +101,8 @@ function onWatchedClick() {
 
 function onQueueClick() {
   if (saveDataAll) {
-    refs.listLib.innerHTML = '';
+      const saveDataQueue = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_QUEUE));
+        refs.listLib.innerHTML = '';
     try {
       Loading.pulse(loadingParams);
       saveDataQueue.map(id => {
