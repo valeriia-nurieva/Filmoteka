@@ -70,7 +70,7 @@ function handlerPagination(evt) {
     return;
   }
   if (evt.target.textContent === "...") {
-    return
+    return;
   }
   const page = evt.target.textContent
   console.log(page);
