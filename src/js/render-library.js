@@ -1,5 +1,5 @@
 import { refs } from './refs';
-import { createLibraryMarkup } from './create-library-markup';
+import { createLibraryMarkup } from './library/create-library-markup';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import FetchFilms from './FetchApi';
 

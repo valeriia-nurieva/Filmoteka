@@ -12,16 +12,30 @@ export default class FetchFilms {
 
   /////Тренди
   async getTrendFilms() {
+    const searchParams = new URLSearchParams({
+      api_key: API_KEY,
+
+      language: 'en-US',
+      page: this.page,
+      include_adult: false, /// контент для дорослих и тд
+    });
     const { data } = await axios.get(
-      `${BASE_URL}trending/movie/day?api_key=${API_KEY}&adult=false`
+      `${BASE_URL}trending/movie/day?${searchParams}`
     );
 
     return data;
   }
 
   async getSetFilms() {
+    const searchParams = new URLSearchParams({
+      api_key: API_KEY,
+
+      language: 'en-US',
+      page: this.page,
+      include_adult: false, /// контент для дорослих и тд
+    });
     const { data } = await axios.get(
-      `${BASE_URL}/movie/popular?api_key=${API_KEY}&adult=false`
+      `${BASE_URL}/movie/popular?${searchParams}`
     );
 
     return data;
@@ -65,6 +79,13 @@ export default class FetchFilms {
 
   get query() {
     return this.searchQuery;
+  }
+  set pages(newQuery) {
+    this.page = newQuery;
+  }
+
+  get pages() {
+    return this.page;
   }
 
   incrementPage() {
