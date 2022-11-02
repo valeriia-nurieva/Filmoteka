@@ -6,11 +6,10 @@ export function createLibraryMarkup({
   title,
   release_date,
   id,
-  vote_average
+  vote_average,
 }) {
   let genresArr = [];
-  genres.map((genre) =>
-    genresArr.push(genre.name));
+  genres.map(genre => genresArr.push(genre.name));
   if (genresArr.length > 3) {
     const changedArr = genresArr.slice(0, 2);
     changedArr.push('Other');

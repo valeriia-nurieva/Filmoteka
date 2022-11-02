@@ -17,17 +17,17 @@ refs.listHome.addEventListener('click', onCardClick);
 
 const api = new Api();
 
-function fetchMovie(id) {
-  return api.getFilmDetails(id).then(response => {
-    return response;
-  });
-}
+// function fetchMovie(id) {
+//   return api.getFilmDetails(id).then(response => {
+//     return response;
+//   });
+// }
 
-function fetchVideo(id) {
-  return api.getFilmVideo(id).then(response => {
-    return response;
-  });
-}
+// function fetchTrailer(id) {
+//   return api.getFilmVideo(id).then(response => {
+//     return response;
+//   });
+// }
 function onCardClick(e) {
   e.preventDefault();
 
@@ -35,14 +35,16 @@ function onCardClick(e) {
     return;
   }
 
-  fetchMovie(e.target.id)
+  api
+    .getFilmDetails(e.target.id)
     .then(Loading.pulse(loadingParams))
     .then(createMarkup)
     .then(() => {
       const btn = document.querySelector('.btn-trailer');
       btn.addEventListener('click', youTube);
       function youTube() {
-        fetchVideo(e.target.id)
+        api
+          .getFilmVideo(e.target.id)
           .then(data => {
             if (data.results.length === 0) {
               return;
@@ -55,7 +57,7 @@ function onCardClick(e) {
 
       function renderTrailer(key) {
         const instance = basicLightbox.create(`
-    <iframe src="https://www.youtube.com/embed/${key}" width="560" height="315" autoplay=1&mute=1&controls=1 ></iframe>
+    <iframe src="https://www.youtube.com/embed/${key}" width="560" height="315" controls=2 allowfullscreen ></iframe>
 `);
         instance.show();
       }
@@ -114,8 +116,9 @@ function onCardClick(e) {
             (data, index, array) => array.indexOf(data) === index
           );
           refs.listLib.innerHTML = '';
+
           allUniqeMovies.map(idNumber => {
-            fetchMovie(idNumber).then(response => {
+            api.getFilmDetails(idNumber).then(response => {
               const markup = createLibraryMarkup(response);
               refs.listLib.insertAdjacentHTML('beforeend', markup);
             });
@@ -153,7 +156,7 @@ function onCardClick(e) {
           );
           refs.listLib.innerHTML = '';
           allUniqeMovies.map(idNumber => {
-            fetchMovie(idNumber).then(response => {
+            api.getFilmDetails(idNumber).then(response => {
               const markup = createLibraryMarkup(response);
               refs.listLib.insertAdjacentHTML('beforeend', markup);
             });
