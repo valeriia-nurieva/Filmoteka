@@ -126,10 +126,6 @@
   text-decoration: none;
   text-transform: uppercase;
 
-  @include desktop {
-    margin-right: 40px;
-  }
-
   &:hover,
   &:focus {
     color: #ff001b;

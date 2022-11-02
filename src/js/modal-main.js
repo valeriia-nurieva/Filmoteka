@@ -2,7 +2,7 @@ import * as basicLightbox from 'basiclightbox';
 import { refs } from './refs';
 import Api from './FetchApi';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
-import { createLibraryMarkup } from './create-library-markup';
+import { createLibraryMarkup } from './library/create-library-markup';
 
 const loadingParams = {
   svgColor: '#FF6B08',
