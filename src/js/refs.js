@@ -7,5 +7,6 @@ export const refs = {
   btnLibWatched: document.querySelector('.watched-js'),
   btnLibQueue: document.querySelector('.queue-js'),
   blockEmptyLib: document.querySelector('.film-lib-empty-js'),
+  pagPage: document.querySelector('.pagination'),
   body: document.querySelector('.page'),
 };
