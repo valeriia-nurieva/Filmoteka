@@ -5,15 +5,9 @@ import '../node_modules/basiclightbox/dist/basicLightbox.min.css';
 import './js/btn-back-to-top';
 import pagination from './js/pagination';
 import './js/modal-main';
-
-
-const pagJs = document.querySelector('.pagJs');
-
 import FetchFilms from './js/FetchApi';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 const fetch = new FetchFilms();
-const pagPage = document.querySelector('.pagination');
-
 
 const loadingParams = {
   svgColor: '#FF6B08',
@@ -26,8 +20,7 @@ initPage();
 async function initPage() {
   try {
     Loading.pulse(loadingParams);
-    const { results, page, total_pages } =
-      await fetch.getTrendFilms();
+    const { results, page, total_pages } = await fetch.getTrendFilms();
     pagination(page, total_pages);
     createMarkup(results);
   } catch (error) {
@@ -42,59 +35,28 @@ paginationBox.addEventListener('click', handlerPagination);
 
 async function handlerPagination(evt) {
   if (evt.target.nodeName !== 'LI') {
-    return
-  }
-  if (evt.target.textContent === "🡸") {
-   
     return;
   }
-  if (evt.target.textContent === "🡺") {
-   
+  if (evt.target.textContent === '🡸') {
     return;
   }
-  if (evt.target.textContent === "...") {
-    return
+  if (evt.target.textContent === '🡺') {
+    return;
   }
-  let pages = evt.target.textContent
-      console.log(pages);
+  if (evt.target.textContent === '...') {
+    return;
+  }
+  let pages = evt.target.textContent;
+
   fetch.pages = pages;
-  console.log('fetch.pages', fetch.pages);
-    const { results, total_results, page, total_pages } =
+
+  const { results, total_results, page, total_pages } =
     await fetch.getTrendFilms();
   pagination(page, total_pages);
-  console.log(results);
-  refs.listHome.innerHTML = ''; 
+  refs.listHome.innerHTML = '';
+  window.scrollTo({ top: 216, behavior: 'smooth' });
   createMarkup(results);
 }
-
-// pagPage.addEventListener('click', clickPagin);
-// async function clickPagin() {
-//   let CurrentPage = 1;
- 
-//   try {
-//     Loading.pulse(loadingParams);
-
-//     const { results, total_results, page, total_pages } =
-//       await fetch.getTrendFilms();
-
-//       pagJs.innerHTML = '';
-//        if ((CurrentPage = page)) {
-//          pagination(CurrentPage, total_pages);
-      
-       
-//          fetch.incrementPage();
-//          console.log(CurrentPage);
-//          console.log(pagPage);
-
-//          createMarkup(results);
-//        }
-//   } catch (error) {
-//     console.log(error.message);
-//   } finally {
-//     Loading.remove();
-//   }
-//   // clearList();
-// }
 
 import onSearch from './js/search';
 import changeColor from './js/svgBgc';
