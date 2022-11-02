@@ -18,8 +18,10 @@ export function createMarkup(array) {
         }
       });
       const genresStr = nameOfGenre.join(', ');
-
-      const date = release_date.slice(0, 4);
+   
+        const date = release_date.slice(0, 4);
+      
+  
       
       return `<li class="grid__item  film-card">
         <a href="#" data-id="${id}" class="list">

@@ -5,6 +5,7 @@ import { createMarkup } from './create-markup';
 import { refs } from './refs';
 import { Notify } from 'notiflix';
 import pagination from './paginationSearch';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 const fetch = new FetchFilms();
 
@@ -21,7 +22,7 @@ const sectionPaginationSearch = document.querySelector(
 
 console.log(pagPage);
 
- searchError.textContent = '';
+searchError.textContent = '';
 export default async function onSearch(e) {
   e.preventDefault();
   fetch.searchQuery = e.currentTarget.elements.searchQuery.value.trim();
@@ -38,20 +39,26 @@ export default async function onSearch(e) {
       if (!results.length) {
         searchError.textContent =
           'Search result not successful. Enter the correct movie name and';
+        searchError.style.color = '#ffa500';
       } else {
         if (!total_results) {
           return (searchError.textContent =
             'Sorry, but your movie was not found');
+          searchError.style.color = '#f00';
         } else {
           if (sectionPaginationSearch.classList.contains('is-hidden')) {
             sectionPaginationSearch.classList.remove('is-hidden');
           }
           // sliderTitle.classList.add('is-hidden');
-
+          console.log(total_results < 20);
+          if (total_results < 20) {
+            sectionPaginationSearch.classList.add('is-hidden');
+          } else {
+            pagination(page, total_pages);
+          }
           clearList();
           sectionPagination.classList.add('is-hidden');
           createMarkup(results);
-          pagination(page, total_pages);
 
           searchError.textContent = 'movies found';
           searchError.style.color = '#00ff00';
@@ -60,6 +67,7 @@ export default async function onSearch(e) {
     }
   } catch (error) {
     searchError.textContent = 'Sorry, but your movie was not found';
+    searchError.style.color = '#f00';
   }
 }
 
