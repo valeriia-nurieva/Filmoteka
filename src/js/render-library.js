@@ -19,7 +19,7 @@ init();
 refs.btnLibWatched.addEventListener('click', onWatchedClick);
 refs.btnLibQueue.addEventListener('click', onQueueClick);
 
-if (saveDataAll.length === 0) {
+if (!savedDataAllQniue.length) {
   refs.blockEmptyLib.classList.remove('is-hidden');
 }
 
@@ -44,7 +44,7 @@ function init() {
 function onWatchedClick() {
     if (saveDataAll) {
         refs.listLib.innerHTML = '';
-    try {
+      try {
       Loading.pulse(loadingParams);
       saveDataWatched.map(id => {
         fetch.getFilmDetails(id).then(promise => {
@@ -78,9 +78,3 @@ function onQueueClick() {
     }
   }
 }
-
-
-      const btnWatched = document.querySelector('.btn-watched');
-const btnQueue = document.querySelector('.btn-queue');
-console.log(btnWatched);
-console.log(btnQueue);

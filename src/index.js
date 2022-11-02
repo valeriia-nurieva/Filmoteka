@@ -1,7 +1,7 @@
 import { refs } from './js/refs';
 import { TmdbApi } from './js/TMDB-api';
 import { createMarkup } from './js/create-markup';
-import './js/pagination';
+
 import './js/btn-back-to-top';
 
 import './js/modal-main';
@@ -9,8 +9,6 @@ import './js/modal-main';
 import FetchFilms from './js/FetchApi';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 const fetch = new FetchFilms();
-
-
 
 const loadingParams = {
   svgColor: '#FF6B08',
@@ -35,3 +33,5 @@ async function initPage() {
 import onSearch from './js/search';
 import changeColor from './js/svgBgc';
 
+import test from './js/test';
+import renderCard from './js/slider';
