@@ -6,8 +6,6 @@
         justify-content: center;
         flex-wrap: wrap;
 
-        
-
         padding-top: 30px;
         padding-bottom: 30px;
 
@@ -19,9 +17,6 @@
         color: inherit;
         text-align: center;
 
-
-
-
         @include tablet {
             font-size: 16px;
             line-height: 1.19;
@@ -31,7 +26,7 @@
 
     &__text {
         margin-bottom: 10px;
-        color: $primary-text-color;
+        color: $secondary-text-color;
 
         @include tablet {
             margin-bottom: 0;
@@ -46,7 +41,7 @@
 }
 
 .footer__link {
-    color: $primary-text-color;
+    color: $secondary-text-color;
     cursor: pointer;
     text-decoration: underline;
 

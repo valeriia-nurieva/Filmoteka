@@ -1,4 +1,5 @@
 .section-film-card {
+    min-height: calc(100vh - 350px);
     padding-top: 20px;
     @include tablet {
         padding-top: 60px;
