@@ -1,4 +1,4 @@
-const BASE_IMG_URL = 'https://image.tmdb.org/t/p/original';
+const BASE_IMG_URL = 'https://image.tmdb.org/t/p/w500';
 import { genres } from './json/genres';
 import { refs } from './refs';
 
