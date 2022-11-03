@@ -37,6 +37,7 @@ function addElFilms(results) {
   results.forEach(el => {
     let image = createElement('img', {
       class: 'cards__image-poster',
+      loading: 'lazy',
       src: `https://image.tmdb.org/t/p/w342${el.poster_path}`,
       onerror: `this.onerror=null;this.src='https://i.ibb.co/4ThsTsv/poster-coming-soon.jpg'`,
       alt: 'film__poster',
