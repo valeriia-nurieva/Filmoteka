@@ -43,6 +43,11 @@ header {
     }
   }
 }
+
+.library-content {
+  min-height: calc(100vh - 80px);
+}
+
 .mobile {
   display: block;
   @media screen and (min-width: 768px) {
