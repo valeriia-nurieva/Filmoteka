@@ -47,7 +47,7 @@ export default class FetchFilms {
       query: this.searchQuery,
       language: 'en-US',
       page: this.page,
-      include_adult: true, /// контент для дорослих и тд
+      include_adult: false, /// контент для дорослих и тд
     });
     const { data } = await axios.get(`${BASE_URL}search/movie?${searchParams}`);
     return data;
