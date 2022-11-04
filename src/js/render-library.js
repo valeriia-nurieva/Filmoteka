@@ -2,8 +2,6 @@ import { refs } from './refs';
 import { createLibraryMarkup } from './library/create-library-markup';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import FetchFilms from './FetchApi';
-import pagination from './pagination';
-
 const fetch = new FetchFilms();
 const LOCAL_STORAGE_KEY_WATCHED = 'watched';
 const LOCAL_STORAGE_KEY_QUEUE = 'queue';
@@ -18,11 +16,10 @@ const savedDataAllQniue = saveDataAll.filter(
 const loadingParams = {
   svgColor: '#FF6B08',
 };
-let page = 1;
-const perPage = 20;
-const total_pages = Math.round(savedDataAllQniue.length / perPage);
-
 //тест пагінації
+// let page = 1;
+// const perPage = 20;
+// const total_pages = Math.round(savedDataAllQniue.length / perPage);
 // savedDataAllQniue.push(663712, 663712, 663712 ,663712, 663712, 663712, 663712, 663712, 663712 ,663712, 663712, 663712, 663712, 663712, 663712 ,663712, 663712, 663712, 663712, 663712, 663712 ,663712, 663712, 663712,663712, 663712, 663712 ,663712, 663712, 663712, 663712, 663712, 663712 ,663712, 663712, 663712)
 // const sliced_array = [];
 // for (let i = 0; i < savedDataAllQniue.length; i += perPage) {
@@ -31,7 +28,6 @@ const total_pages = Math.round(savedDataAllQniue.length / perPage);
 // console.log(sliced_array);
 
 init();
-pagination(page, total_pages);
 
 refs.btnLibWatched.addEventListener('click', onWatchedClick);
 refs.btnLibQueue.addEventListener('click', onQueueClick);
@@ -56,27 +52,6 @@ export function init() {
       Loading.remove();
     }
   }
-}
-
-const paginationBox = document.querySelector('.pagination')
-paginationBox.addEventListener('click', handlerPagination);
-function handlerPagination(evt) {
-  if (evt.target.nodeName !== 'LI') {
-    return
-  }
-  if (evt.target.textContent === "🡸") {
-   
-    return;
-  }
-  if (evt.target.textContent === "🡺") {
-   
-    return;
-  }
-  if (evt.target.textContent === "...") {
-    return
-  }
-  let pages = evt.target.textContent
-console.log(pages);
 }
 
 function onWatchedClick() {
