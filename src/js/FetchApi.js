@@ -17,7 +17,7 @@ export default class FetchFilms {
 
       language: 'en-US',
       page: this.page,
-      include_adult: false, /// контент для дорослих и тд
+      include_adult: true, /// контент для дорослих и тд
     });
     const { data } = await axios.get(
       `${BASE_URL}trending/movie/day?${searchParams}`
@@ -32,7 +32,7 @@ export default class FetchFilms {
 
       language: 'en-US',
       page: this.page,
-      include_adult: false, /// контент для дорослих и тд
+      include_adult: true, /// контент для дорослих и тд
     });
     const { data } = await axios.get(
       `${BASE_URL}/movie/popular?${searchParams}`
@@ -47,7 +47,7 @@ export default class FetchFilms {
       query: this.searchQuery,
       language: 'en-US',
       page: this.page,
-      include_adult: false, /// контент для дорослих и тд
+      include_adult: true, /// контент для дорослих и тд
     });
     const { data } = await axios.get(`${BASE_URL}search/movie?${searchParams}`);
     return data;
@@ -55,7 +55,14 @@ export default class FetchFilms {
   ////Посилання на документацію для запиту повної інформації про кінофільм для сторінки кінофільму:
   async getFilmDetails(id) {
     try {
-      const url = `${BASE_URL}movie/${id}?api_key=${API_KEY}&language=en-US`;
+       const searchParams = new URLSearchParams({
+         api_key: API_KEY,
+         
+         language: 'en-US',
+         page: this.page,
+         include_adult: true, /// контент для дорослих и тд
+       });
+      const url = `${BASE_URL}movie/${id}?${searchParams}`;
       const { data } = await axios.get(url);
       return data;
     } catch (error) {
@@ -65,7 +72,14 @@ export default class FetchFilms {
   ////Посилання на документацію для запиту повної інформації про можливий трейлер на YouTube:
   async getFilmVideo(id) {
     try {
-      const url = `${BASE_URL}movie/${id}/videos?api_key=${API_KEY}&language=en-US`;
+       const searchParams = new URLSearchParams({
+         api_key: API_KEY,
+
+         language: 'en-US',
+         page: this.page,
+         include_adult: true, /// контент для дорослих и тд
+       });
+      const url = `${BASE_URL}movie/${id}/videos?${searchParams}`;
       const { data } = await axios.get(url);
       return data;
     } catch (error) {
