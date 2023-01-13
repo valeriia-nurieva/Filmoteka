@@ -32,7 +32,7 @@ export default class FetchFilms {
 
       language: 'en-US',
       page: this.page,
-      include_adult: true, /// контент для дорослих и тд
+      include_adult: false, /// контент для дорослих и тд
     });
     const { data } = await axios.get(
       `${BASE_URL}/movie/popular?${searchParams}`
